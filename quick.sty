@@ -55,10 +55,12 @@
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathmorphing,calc,arrows.meta}
 
-% Define some sophisticated formal colors
+% Define our formal colors (keeping the original ones)
 \definecolor{formalgray}{RGB}{248,248,248}
 \definecolor{formalframe}{RGB}{70,70,70}
 \definecolor{formaltitle}{RGB}{40,40,40}
+\definecolor{formalblue}{RGB}{235,242,248}
+\definecolor{formalblueborder}{RGB}{40,80,120}
 
 % Custom decoration for the title underline
 \tikzset{
@@ -66,6 +68,21 @@
         decoration={expanding waves,angle=2,segment length=2mm},
         decorate
     }
+}
+
+% Shared tcolorbox settings
+\tcbset{
+    enhanced,
+    breakable,
+    skin=enhanced,
+    boxsep=3pt,           % Reduced from default
+    left=10pt,            % Reduced from 15pt
+    right=10pt,           % Reduced from 15pt
+    top=6pt,              % Reduced from 12pt
+    bottom=6pt,           % Reduced from 12pt
+    before skip=4pt,      % Added to reduce vertical spacing between boxes
+    after skip=4pt,       % Added to reduce vertical spacing between boxes
+    parbox=false
 }
 
 % Define the Example box with enhanced formal styling
@@ -97,10 +114,6 @@
     top=12pt,
     bottom=12pt,
     overlay unbroken and first={
-        % Left decorative mark
-        \draw[line width=0.5pt] 
-            ([xshift=5pt,yshift=-7pt]title.base west) -- 
-            ([xshift=5pt,yshift=-7pt]title.base east);
         \draw[formalframe] 
             ([xshift=-2pt]interior.west) -- 
             ([xshift=3pt]interior.west);
@@ -179,10 +192,17 @@
     enhanced,
     breakable,
     skin=enhanced,
-    colback=formalgray,
-    colframe=formalframe,
+    boxsep=3pt,
+    left=10pt,
+    right=10pt,
+    top=6pt,
+    bottom=6pt,
+    before skip=4pt,
+    after skip=4pt,
+    colback=formalblue,
+    colframe=formalblueborder,
     colbacktitle=white,
-    coltitle=formaltitle,
+    coltitle=formalblueborder,
     boxrule=0.5pt,
     titlerule=0pt,
     arc=0pt,
@@ -194,22 +214,11 @@
     sharp corners,
     fonttitle=\large\sffamily\bfseries,
     title=\textsc{#1},
-    parbox=false,
-    before=\par\medskip\noindent,
-    after=\par\medskip,
-    left=15pt,
-    right=15pt,
-    top=12pt,
-    bottom=12pt,
     overlay unbroken and first={
-        \draw[line width=0.5pt] 
-            ([xshift=5pt,yshift=-7pt]title.base west) -- 
-            ([xshift=5pt,yshift=-7pt]title.base east);
-        \draw[formalframe] 
+        \draw[formalblueborder] 
             ([xshift=-2pt]interior.west) -- 
             ([xshift=3pt]interior.west);
-        % Different vertical line style for idea boxes
-        \draw[formalframe!30, dotted] 
+        \draw[formalblueborder!30, dotted] 
             ([xshift=2.5pt]interior.north west) -- 
             ([xshift=2.5pt]interior.south west);
     }
@@ -363,7 +372,7 @@
 \newcommand{\three}{\mathbf{III}}
 \newcommand{\from}{\leftarrow}
 \newcommand{\dbar}{{d\mkern-7mu\mathchar'26\mkern-2mu}} % it's dbar!
-\newcommand{\reals}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\zee}{\mathbb{Z}}
 \newcommand{\xto}[1]{\xrightarrow{#1}}
 \newcommand{\unitv}[1]{\hat{\v{#1}}}

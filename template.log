@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.8.16)  2 DEC 2024 02:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.8.16)  4 DEC 2024 11:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -684,13 +684,13 @@ LaTeX Info: Redefining \bm on input line 209.
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 
-./quick.sty:507: LaTeX Error: Option clash for package graphicx.
+./quick.sty:516: LaTeX Error: Option clash for package graphicx.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.507 \usepackage
+l.516 \usepackage
                  {fancyhdr}
 The package graphicx has already been loaded with options:
   []
@@ -717,17 +717,17 @@ Package: lipsum 2019/01/02 v2.2 150 paragraphs of Lorem Ipsum dummy text
  (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
 File: lipsum.ltd.tex 2019/01/02 v2.2 The Lorem ipsum dummy text
 ))
-./quick.sty:578: You already have nine parameters.
+./quick.sty:587: You already have nine parameters.
 \reserved@a ...\expandafter \mthfr \reserved@b #11
                                                   2{
-l.578 }
+l.587 }
        
 I'm going to ignore the # sign you just used.
 
-./quick.sty:588: You already have nine parameters.
+./quick.sty:597: You already have nine parameters.
 \reserved@a ...\expandafter \mfrth \reserved@b #11
                                                   2{
-l.588 }
+l.597 }
        
 I'm going to ignore the # sign you just used.
 
@@ -927,33 +927,33 @@ and I'll forget about whatever was undefined.
 
 [2]
 
-./template.tex:179: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+./template.tex:180: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
 
 See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.179 	\begin{examplebox}[1.2]
+l.180 	\begin{examplebox}[1.2]
                               \quad
 (That was another \errmessage.)
 
 
-./template.tex:179: LaTeX Error: No counter 'example' defined.
+./template.tex:180: LaTeX Error: No counter 'example' defined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.179 	\begin{examplebox}[1.2]
+l.180 	\begin{examplebox}[1.2]
                               \quad
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./template.tex:179: Undefined control sequence.
+./template.tex:180: Undefined control sequence.
 <recently read> \theexample 
                             
-l.179 	\begin{examplebox}[1.2]
+l.180 	\begin{examplebox}[1.2]
                               \quad
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -961,147 +961,158 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[3]
-./template.tex:242: Undefined control sequence.
-<recently read> \R 
-                   
-l.242 ...s a set of elements (e.g., vectors in $\R
-                                                  ^{n}$, polynomials, diagon...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[4]
-./template.tex:249: Undefined control sequence.
-<recently read> \R 
-                   
-l.249 ... instance of we define a vector space $\R
-                                                  ^2$. $W$ could be $\R^2$ o...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./template.tex:249: Undefined control sequence.
-<recently read> \R 
-                   
-l.249 ...e a vector space $\R^2$. $W$ could be $\R
-                                                  ^2$ or $W= \{0\}$. A more ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./template.tex:252: Undefined control sequence.
-l.252 ... \in S_{1} \cap S_{2}$ and $\alpha \in \R
-                                                  $. Since $S_{1}$ is a subs...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--254
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 251--255
 
  []
 
-./template.tex:257: Undefined control sequence.
-l.257 		\item Formally, $C(A) = \{Ax \mid x \in \R
-                                                  ^{n}\}$
+[5] [6]
+
+./template.tex:404: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.404 \begin{examplebox}[1.3]
+                             \quad
+(That was another \errmessage.)
+
+
+./template.tex:404: LaTeX Error: No counter 'example' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.404 \begin{examplebox}[1.3]
+                             \quad
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./template.tex:404: Undefined control sequence.
+<recently read> \theexample 
+                            
+l.404 \begin{examplebox}[1.3]
+                             \quad
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./template.tex:259: Undefined control sequence.
-l.259 ...$ is invertible if and only if $C(A) = \R
-                                                  ^{n}$
+[7]
+
+./template.tex:434: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434 \begin{examplebox}[1.4]
+                             \quad
+(That was another \errmessage.)
+
+
+./template.tex:434: LaTeX Error: No counter 'example' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434 \begin{examplebox}[1.4]
+                             \quad
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./template.tex:434: Undefined control sequence.
+<recently read> \theexample 
+                            
+l.434 \begin{examplebox}[1.4]
+                             \quad
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-./template.tex:261: LaTeX Error: Command \end{itemize} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.261 \end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-./template.tex:261: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.261 \end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-./template.tex:261: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.261 \end{itemize}
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-./template.tex:261: Missing $ inserted.
+[8]
+./template.tex:468: Missing $ inserted.
 <inserted text> 
                 $
-l.261 \end{itemize}
-                   
+l.468 \subsubsection
+                    *{CR Factorization}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:468: Missing } inserted.
+<inserted text> 
+                }
+l.468 \subsubsection
+                    *{CR Factorization}
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 265.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 265.
- (./template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 265.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 265.
+./template.tex:468: Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.468 \subsubsection
+                    *{CR Factorization}
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[9]
+
+./template.tex:472: LaTeX Error: \begin{itemize} on input line 274 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.472 \end{document}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 472.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 472.
+(./template.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 472.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 472.
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 0A9B697F2EAC30FD05F990D1813E1EB1;170.
+(rerunfilecheck)             Checksum: 42269610E42ACC036BB29732EA20BB5C;232.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 265.
- ) 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 472.
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 274 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 27502 strings out of 481239
- 538699 string characters out of 5920377
- 1050859 words of memory out of 5000000
- 42145 multiletter control sequences out of 15000+600000
- 546153 words of font info for 86 fonts, out of 8000000 for 9000
+ 27567 strings out of 481239
+ 539377 string characters out of 5920377
+ 1050927 words of memory out of 5000000
+ 42155 multiletter control sequences out of 15000+600000
+ 546567 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,17n,87p,956b,1198s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on template.pdf (5 pages, 201735 bytes).
+ 67i,21n,87p,956b,1200s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on template.pdf (9 pages, 237030 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 20005 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 236 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 20013 words of extra memory for PDF output out of 20736 (max. 10000000)
 

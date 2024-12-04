@@ -126,12 +126,13 @@ Here we have gone from the augmented matrix $[ A | b]$ to a much nicer $[U | b]$
 	\item If you have a $4 \times 4$ matrix $A$, find a 4-D vector $x$ such that $Ax$ is the second column of $A$.
 		    
 		\end{enumerate}
-		\begin{solution}[1.1] \quad\vspace{-0.5cm}
+		\begin{solution}[1.1] \quad\vspace{-0.2cm}
 		\begin{enumerate}
 		    \item To reflect across the origin, $x \mapsto -x$, $y \mapsto -y$. Therefore, $A = \begin{bmatrix}
 	  -1 & 0\\
 	0 & -1
 	\end{bmatrix}$.
+
 \item Here $\begin{bmatrix}
   x\\
 y\\
@@ -251,16 +252,222 @@ Here $A$ is a \textbf{permutation matrix}, as it permutes one or more of the var
 		\\\\
 		\begin{proof} Assuming that this is true, any $v, w \in S$ will also be $v, w \in S_{1}$ and $v,w \in S_{2}$ by the definition of an intersection. Then $v+w$ will be in	$S_{1}$ and $S_{2}$ by the deifnition of subspace. Thus $v+w \in S_{1} \cap S_{2} =S$ which shows that it is closed under addition. Then we can define $v \in S_{1} \cap S_{2}$ and $\alpha \in \R$. Since $S_{1}$ is a subspace, $\alpha v \in S_{1}$ and $S_{2}$ such that $\alpha v \in S_{1} \cap S_{2}=S$, showing that it is closed under scalar multiplication. 
 		\end{proof}
-\subsubsection*{Column Space}
-\item The \textbf{column space} of an $m \times n$ matrix $A$, denoted $C(A)$ is the set of linear combinations of columns of $A$, also known as the \textbf{span} of $A$. We can define useful facts such as
+	\end{itemize}
+		\begin{ideabox}[Common vector spaces]\quad
+			\begin{itemize}
+			    
+		    
+\item The \textbf{column space} of an $m \times n$ matrix $A$, denoted $C(A)$ is the set of linear combinations of columns of $A$, also known as the \textbf{span} of $A$. Although the idea may seem a bit abstract, soon we will be very interested in what columnspace a vector is in. We can define useful facts such as
 	\begin{enumerate}
 		\item Formally, $C(A) = \{Ax \mid x \in \R^{n}\}$ 
 		\item $Ax=b$ has a solution if and only if $b \in C(A)$
-		\item If $m=n$, then $A$ is invertible if and only if $C(A) = \R^{n}$
-	\end{enumerate}$
+		\item If $m=n$, then $A$ is invertible if and only if $C(A) = \R ^{n}$
+	\end{enumerate}
+\item The \textbf{null space} of $A$, denoted $N(A)$ is the set of vectors $x$ such that $Ax = \mathbf{0}$. We can define similar facts
+	\begin{enumerate}
+		\item $N(A) = \{ x \in \R^{n} \mid Ax = \bm{0} \}$
+		\item If $B$ is square and invetible, $N(A)=N(BA)$
+		\item If $A \in \R^{n \times n}$, then $C(A) = \R^n$ is equivalent to $N(A) = \{\bm{0}\}$
+	\end{enumerate}
 \end{itemize}
+		\end{ideabox}
+		\begin{itemize}
+			\subsubsection*{Computing basis of a null space}
+		\item Before we start with computation, it helps to briefly examine our matrix. If we are looking at an invertible matrix, then its null space will clearly be $\{ \bm{0}\}$, since there is no non-trivial $x$ that will give $\bm{0}$. Even if $A$ is not invertible, if every column has a pivot, then there are no variables that can move freely. This can happen easily for an ``overdetermined'' system where a matrix has more rows than columns. However, the most interesting case in which $A$ is ``underdetermined'' such that it has many more columns than rows, and thus many free variables.
+		\item Our goal for underdetermined systems will be to transform some matrix $A$
+			$$A \leadsto U = \begin{bmatrix}
+			  U_r & F \\
+			  m-r \text{ rows of }0's & \cdots
+			\end{bmatrix}$$
+		\item Now how do we implement this scary looking transformation? In reality it is quite simple. First transform $A$ into an upper-triangular matrix $U$ with gaussian elimination.
 
+		\begin{align}
+       A = \begin{bmatrix}
+         1 & 2 & 3 & 1\\
+       1 & 4 & 5 & -3\\
+       1 & 6 & 7 & -7
+       \end{bmatrix}
+	   \leadsto
+	   \begin{bmatrix}
+		   \boxed{1} & 2 & 3 & 1\\
+		 & \boxed{2} & 2 & -4\\
+	    &  &  & 
+	   \end{bmatrix}
+   \end{align} 
+   Let pivot columns $U_r =\begin{bmatrix}
+     1 & 2\\
+    & 2
+   \end{bmatrix}$ and free columns $F=\begin{bmatrix}
+     3 & 1\\
+   2 & -4
+   \end{bmatrix}$
+   such that
+       $U=\begin{bmatrix}
+         U_r & F\\
+		 \mathbf{0} & \mathbf{0}
+       \end{bmatrix}$.
+   \item Then we can start with the actual linear algebra. To find $N(A)$ we want $Ax = \mathbf{0} \iff Ux = \mathbf{0}$. In order to compute this we define two vectors $\mathbf{p}$ for the coefficients of $x$ by which the pivot columns of $U$ are multiplied, and a vector $f$ for the values of $x$ that multiply the free columns. With this we can say,
+   \begin{gather}
+	   U=\begin{pmatrix}
+         U_r & F\\
+		 \mathbf{0} & \mathbf{0}
+       \end{pmatrix}
+	   \begin{pmatrix}
+		   \mathbf{p}\\
+		   \mathbf{f}
+	   \end{pmatrix}
+		= \begin{pmatrix}
+		   U_r \mathbf{p} + F\mathbf{f}\\
+		   \mathbf{0}
+	   \end{pmatrix}
+	   = \mathbf{0}  \\
+   U_r \mathbf{p} + F\mathbf{f} = \mathbf{0} \\
+   \boxed{U_r \mathbf{p} =- F\mathbf{f}}
+   \end{gather}
+   $U_r$ is guarunteed to be invertible, so we can say
+	   $\mathbf{p} = U_{r}^{-1}(-F \mathbf{f})$
+   is guarunteed to be uniquely determined for any choice of $\mathbf{f}$. Then $\begin{pmatrix}
+	   \mathbf{p}\\
+	   \mathbf{f}
+   \end{pmatrix}$ is a basis vector of our nullspace. To show this, let's expand the boxed formula above for our example.
+   \begin{align}
+       \begin{bmatrix}
+         1 & 2\\
+        & 2
+       \end{bmatrix}
+	   \begin{bmatrix}
+	     p_{1}\\
+	   p_{2}
+	   \end{bmatrix}
+	   =-\begin{bmatrix}
+	     3 & 1\\
+	   2 & -4
+	   \end{bmatrix}
+	   \begin{bmatrix}
+	     f_{1}\\
+	   f_{2}
+	   \end{bmatrix}
+   \end{align}
+\item For an $n$-dimensional null space, we can just make up whatever $n$ linearly independent $\mathbf{f}$ vectors we might fancy. For simplicity, say $\mathbf{f} = \begin{bmatrix}
+  1\\
+0
+\end{bmatrix}$ such that
+   \begin{align}
+       \begin{bmatrix}
+         1 & 2\\
+        & 2
+       \end{bmatrix}
+	   \begin{bmatrix}
+	     p_{1}\\
+	   p_{2}
+	   \end{bmatrix}
+	   =\underbrace{\begin{bmatrix}
+	     -3 \\ -2\\
+ \end{bmatrix}}_{-F \mathbf{f}} \longrightarrow \mathbf{p}= \vtwoC{-1}{-1} \text{ and }x = \begin{bmatrix}
+   -1 & -1 & 1 & 0
+\end{bmatrix}^{T}
+   \end{align}
+   Then we can do this again for $\mathbf{f} = \begin{bmatrix}
+     0 & 1
+   \end{bmatrix}^{T}$ to complete the basis for $N(A)$.
+   
+\item In the case that the pivot columns are not adjacent, you \textit{can} interlace the $p$ and $f$ elements systematically.
 
+\subsubsection*{Computing the basis of a columnspace}
+\item Let's revisit our matrix $A$ from the previous example.
+\begin{align}
+    A = \begin{bmatrix}
+      1 & 2 & 3 & 1\\
+    1 & 4 & 5 & -3\\
+    1 & 6 & 7 & -7
+    \end{bmatrix}
+	\leadsto
+	U= \begin{bmatrix}
+	  1 & 2 & 3 & 1\\
+	 & 2 & 2 & -4\\
+	 &  &  & 0
+	\end{bmatrix}
+\end{align}
+In $U$ we can easily identify that $c_{1}$ and $c_{2}$ contain our pivots. Therefore, our basis for $C(A)$ is simply columns $c_{1}$ and $c_{2}$ of $A$ itself. Don't forget, though, that $C(A) \neq C(U)$. Rather,
+\begin{align}
+    C(A) = \text{span}\Biggl\{\begin{bmatrix}
+	  1\\
+	1\\
+	1
+	\end{bmatrix}, \begin{bmatrix}
+	  2\\
+	4\\
+	6	
+	\end{bmatrix} \Biggl\}
+\end{align}
+
+\begin{examplebox}[1.3]\quad
+	\begin{enumerate}
+		\item If the zero vector is in $C(A)$, then the columns of $A$ are linearly dependent.
+		\item The columns of a matrix are a basis for the column space
+		\item Define the row space of $A$ as the span of the row vectors. If $A$ is square, then the row space equals the column space.
+		\item The row space of $A$ is equal to the column space of $A^{T}$.
+		\item If the row space of $A$ equals the column space, then $A^{T} = A$.
+		\item A $4 \times 4$ permutation matrix has $C(P) = \R^{4}$.
+		\item For $ v \in N(A) $, if $x$ is a solution to $Ax=b$, so is $x + v$
+	\end{enumerate}
+	\begin{solution}[1.3]\quad\vspace{-0.4cm}
+		\begin{enumerate}
+			\item \textbf{False.} $A=I$ is a counterexample. The zero vector is in the column span of every matrix!
+			\item \textbf{False.} This is true only if the columns are linearly independent. It is clearly not true for underdetermined sysystems where there are more columns than rows.
+			\item \textbf{False.} As a counterexample $A = \mtwtw{1}{1}{0}{0}$ where $C(A) = \vtwoC{1}{0}$ and $R(A) = \vtwoC{1}{1}$
+			\item \textbf{True.} This is simply the definition of the row space, and the set of rows of $A$ is identical to the set of columns of $A^{T}$.
+			\item \textbf{False:} Consider $A = \mtwtw{1}{2}{3}{4}$. Both $C(A) = \R^{2}$ and $R(A) = \R^{2}$. However, $A \neq A^{T}$.
+			\item \textbf{True:} A permutation space simply permutes the order of the variables. If it were to not be in $\R^{4}$, it would somehow lose one of the dimensions.
+			\item \textbf{True:} If $v \in N(A)$, $Av = \mathbf{0}$. Therefore $A(x+v) = Ax+av =b$ which is defined in $C(A)$ \end{enumerate}
+	    
+	\end{solution}
+	\begin{takeaways}[1.3]\quad\vspace{-0.3cm}
+		\begin{enumerate}
+		    \item We will see the row space $C(A^{T})$ in more detail soon. This problem examines simple properties that it has. It is essential to remember that $C(A) \neq C(A^{T})$, even if they have the same dimension.
+			\item Always look for simple matricies of size $2 \times 2$ or smaller tos how counterexamples. Most false properties will collapse even by this size.
+		\end{enumerate}
+	\end{takeaways}
+    
+\end{examplebox}
+
+\begin{examplebox}[1.4]\quad
+$AB = 0$ (the zero matrix) for matricies $A$ and $B$. If the null space of $\_\_\_$ is $\{=, \subseteq, \supseteq \}$ the column space of $\_\_\_$?
+\begin{solution}[1.4]\quad\vspace{-0.3cm}
+	Recalling our ``Column-Wise`` definition for matrix multiplication
+			$$AB = \begin{bmatrix}   
+			  \vertbar & \vertbar &  & \vertbar\\
+			Ab_{1} & Ab_{2} & \cdots & Ab_{p}\\
+			  \vertbar & \vertbar &  & \vertbar
+			\end{bmatrix}$$
+			$AB=0$ only if every column of $B$ is in the null space of $A$. Therefore the $N(A)$ must contain any possible linear combination of $B$ and possibly more. Therefore $N(B) \supseteq C(A)$
+\end{solution} 
+\end{examplebox}
+
+\subsection{Factorization}
+\item Before we get to factorization, we should define some simple concepts that have already appeared. For instance, the \textbf{rank} of a matrix is simply the number of pivots. Simply, $\operatorname{rank} A = \dim C(A) = \dim C(A^{T})$, which should be intuitive. We can also define the \textbf{rank-nullity theorem} as $\dim N(A) = n-r$ for $r$ pivots and $n$ columns. Although we do not yet have the tools to introduce them all now, in this document we will examine \textbf{four critical factorizations}
+	\begin{align}
+		A &= LU \\
+		A &= QR \\
+		S &= Q \Lambda Q^{T} \\
+		A &= U \Sigma V^{T}
+	\end{align}
+	\subsubsection*{LU Factorization}
+\item It turns out that matricies can be described in many ways. Some of these ways can help you solve difficult problems. The first of these is the $\bm{LU}$\textbf{-factorization}, which relates $A$ to its upper-triangular form $U$. In the process, it tells us about the inverse of a matrix. 
+\item The crux of the factorization is just Gaussian elimiation of $A \leadsto U$, but storing the coefficients of each row operation in a left-multipliying matrix $L$ 
+\begin{align}
+	A &= \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 2 & 5 & 1 \\ -3 & 1 & -1 \end{bmatrix} \stackrel{r_2 - \color{red}{2}r_1}{\stackrel{r_3 + {\color{red}{3}}r_1}{\longrightarrow}}
+    \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 0 & \color{blue}{1} & 1 \\  0 & 7 & -1 \end{bmatrix} \stackrel{r_3 - \color{red}{7}r_2}{\longrightarrow}
+    \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 0 & \color{blue}{1} & 1 \\  0 & 0 & \color{blue}{-8} \end{bmatrix} = U  \\
+	\implies L &= \begin{bmatrix} 1 & & \\ \color{red}{+2} & 1 & \\ \color{red}{-3} & \color{red}{+7} & 1 \end{bmatrix}
+	\longrightarrow A = LU
+\end{align} 
+\item And as it turns out it is \textit{much} easier to calculate the inverse of a triangular matrix than a dense matrix. We can rely on $A^{-1} = (LU)^{-1} = U^{-1}L^{-1}$, and then on the kind fact that we can find each of those inverses through back substitution of $U$ and forward-substitution of $L$.
+\item In reality, it's worth noting that it's not \textit{really} $A=LU$, but rather $PA=LU$. We must apply a permutation matrix to $A$ in order to account for the fact that the pivots of $A$ may not be perfectly ordered. We may at some point be forced to do a row swap, and hence apply a permutation at the end of the computation.
+$
+\subsubsection*{CR Factorization}
+\item We learned a moment ago how to compute a basis for $C(A)$. We can use that to write $A = CR$, where $C \in \R^{m \times r}$ consists of \textit{any} basis for $C$. Then, the columns of $R$ are a basis for $C(A^{T})$. This has to be computed case-by-case, and it's computation is not of particular interest to us right now. 
+\item 
 
 \end{document}
 
