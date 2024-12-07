@@ -484,6 +484,37 @@ y_{2}
 
 \item As we can see with the figures, if we have two points, we can define exaclty one line. If we have 3 points, we can define exactly 1 parabola. This is a formalization of the intuitive fact that we can draw an infinte number of parabolas to fit two points.
 
+	\subsubsection*{Four Fundemental Subspaces}
+\item We can model almost everything in the $Ax=b$ mathematical ecoysstem in terms of transformations between four subspaces, $C(A),\ N(A),\ C(A)^{\perp} = N(A^{T}),\ N(A)^{\perp}= C(A^{T})$. Wonderfully, there is an amazing visual for this as well.
+
+$$
+\begin{tikzpicture}[scale=1.3, baseline]
+
+	    %\clip (-2, -1.5) rectangle (2.0, 1.5);
+		\draw (-2, 0) -- (2, 0);
+		\draw (0, -1.4) -- (0, 1.4);
+		\draw[thick, blue] (-15:2) -- node[very near end, anchor=south] {$C(A)$} (-15:-2);
+		\draw[dotted , thick, blue] (75:1.4) -- node[very near start, anchor=south, yshift=3mm] {$N(A^{T})$}(75:-1.4);
+		\node at (1.6, 1.3) [anchor=center] {$\R^{n}$}; 
+		\node at (0, -2.0) [anchor=center] {Inputs $x$ in $\R^{n}$}
+\end{tikzpicture}
+\qquad
+\raisebox{7.07em}{
+\xrightarrow{\qquad\qquad}
+}\qquad
+\begin{tikzpicture}[scale=1.3, baseline]
+
+	    %\clip (-2, -1.5) rectangle (2.0, 1.5);
+		\draw (-2, 0) -- (2, 0);
+		\draw (0, -1.4) -- (0, 1.4);
+		\draw[thick, red] (-35:2) -- node[very near end, anchor=south, yshift=3mm] {$N(A)$} (-35:-2);
+		\draw[dotted , thick, red] (55:1.4) -- node[very near start, anchor=south, yshift=3mm] {$C(A^{T})$}(55:-1.4);
+		\node at (1.6, 1.3) [anchor=center] {$\R^{m}$}; 
+		\node at (0, -2.0) [anchor=center] {Outputs $Ax$ in $\R^{m}$}
+\end{tikzpicture}
+$$
+
+	
 \begin{examplebox}[1.3]\quad
 	\begin{enumerate}
 		\item If the zero vector is in $C(A)$, then the columns of $A$ are linearly dependent.
@@ -515,7 +546,7 @@ y_{2}
 \end{examplebox}
 
 \begin{examplebox}[1.4]\quad
-$AB = 0$ (the zero matrix) for matricies $A$ and $B$. If the null space of $\_\_\_$ is $\{=, \subseteq, \supseteq \}$ the column space of $\_\_\_$?
+\noindent $AB = 0$ (the zero matrix) for matricies $A$ and $B$. If the null space of $\_\_\_$ is $\{=, \subseteq, \supseteq \}$ the column space of $\_\_\_$?
 \begin{solution}[1.4]\quad\vspace{-0.3cm}
 	Recalling our ``Column-Wise`` definition for matrix multiplication
 			$$AB = \begin{bmatrix}   
@@ -526,49 +557,20 @@ $AB = 0$ (the zero matrix) for matricies $A$ and $B$. If the null space of $\_\_
 			$AB=0$ only if every column of $B$ is in the null space of $A$. Therefore the $N(A)$ must contain any possible linear combination of $B$ and possibly more. Therefore $N(B) \supseteq C(A)$
 \end{solution} 
 \end{examplebox}
-
-\subsection{Factorization (pt. 1)}
-\item Before we get to factorization, we should define some simple concepts that have already appeared. For instance, the \textbf{rank} of a matrix is simply the number of pivots. Simply, $\operatorname{rank} A = \dim C(A) = \dim C(A^{T})$, which should be intuitive. We can also define the \textbf{rank-nullity theorem} as $\dim N(A) = n-r$ for $r$ pivots and $n$ columns. Although we do not yet have the tools to introduce them all now, in this document we will examine \textbf{four critical factorizations}
-	\begin{align}
-		A &= LU \\
-		A &= QR \\
-		S &= Q \Lambda Q^{T} \\
-		A &= U \Sigma V^{T}
-	\end{align}
-	\subsubsection*{LU Factorization}
-\item It turns out that matricies can be described in many ways. Some of these ways can help you solve difficult problems. The first of these is the $\bm{LU}$\textbf{-factorization}, which relates $A$ to its upper-triangular form $U$. In the process, it tells us about the inverse of a matrix. 
-\item The crux of the factorization is just Gaussian elimiation of $A \leadsto U$, but storing the coefficients of each row operation in a left-multipliying matrix $L$ 
-\begin{align}
-	A &= \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 2 & 5 & 1 \\ -3 & 1 & -1 \end{bmatrix} \stackrel{r_2 - \color{red}{2}r_1}{\stackrel{r_3 + {\color{red}{3}}r_1}{\longrightarrow}}
-    \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 0 & \color{blue}{1} & 1 \\  0 & 7 & -1 \end{bmatrix} \stackrel{r_3 - \color{red}{7}r_2}{\longrightarrow}
-    \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 0 & \color{blue}{1} & 1 \\  0 & 0 & \color{blue}{-8} \end{bmatrix} = U  \\
-	\implies L &= \begin{bmatrix} 1 & & \\ \color{red}{+2} & 1 & \\ \color{red}{-3} & \color{red}{+7} & 1 \end{bmatrix}
-	\longrightarrow A = LU
-\end{align} 
-\item And as it turns out it is \textit{much} easier to calculate the inverse of a triangular matrix than a dense matrix. We can rely on $A^{-1} = (LU)^{-1} = U^{-1}L^{-1}$, and then on the kind fact that we can find each of those inverses through back substitution of $U$ and forward-substitution of $L$.
-\item In reality, it's worth noting that it's not \textit{really} $A=LU$, but rather $PA=LU$. We must apply a permutation matrix to $A$ in order to account for the fact that the pivots of $A$ may not be perfectly ordered. We may at some point be forced to do a row swap, and hence apply a permutation at the end of the computation.
-
-\subsubsection*{CR Factorization}
-\item This is not one of our ``critical factorizations''. However, it is useful for us. We learned a moment ago how to compute a basis for $C(A)$. We can use that to write $A = CR$, where $C \in \R^{m \times r}$ consists of \textit{any} basis for $C$. The truth of this should be intuitive by how we have constructed the principle of a columnspace. We can take for example
-	$$A = \begin{bmatrix}
-	  1 & 2 & 3 & 1\\
-	1 & 2 & 5 & -3\\
-	1 & 2 & 7 & -7
-	\end{bmatrix} \leadsto U= \begin{bmatrix}
-	  1 & 2 & 0 & 7\\
-	 &  & 1 & 2\\
-	 &  &  & 
-	\end{bmatrix}$$
-	where clearly $\mathbf{c}_{1}$ and $\mathbf{c}_{3}$ are the pivot rows such that $C(A) = \span \{\mathbf{c_{1}}, \mathbf{c}_{3}\}$. We can from this express a \textit{specific case} of CR-Factorization as
-	$$A = \underbrace{ \begin{bmatrix}
-	  1 & 3\\
-	1 & 5\\
-	1 & 7
-\end{bmatrix}}_C \underbrace{ \begin{bmatrix}
-	  1 & 2 & 0 & 7\\
-	0 & 0 & 1 & 2
-\end{bmatrix}}_R$$
-where, here, $C$ is the \textit{specific} column space basis corresponding to the pivot columns of the original matrix, and $R$ is the reduced row eschelon form of $A$, ommiting the trivial last row. This does not generalize to all solutions for the factorization.
+\begin{examplebox}[1.5]\quad \\
+    \noindent Show that if $A$ is full column rank, then $A^{T}A$ is invertible.
+	\begin{solution}[1.5]\quad \\
+	    We know easily that $A^{T}A$ will be square. What we really want to show here is that $N(A) = N(A^{T}A)$. The trouble is that in order to prove they are \textit{equal}, we must show that \textbf{both} any $x \in N(A)$ is in $N(A^{T}A$ (i.e. $N(A) \subseteq N(A^{T}A)$) and that any $x \in N(A^{T}A)$ is in $N(A)$ (i.e. $N(A^{T}A) \subseteq N(A)$)
+\\\\
+		\noindent First, $x \in N(A) \to Ax = 0 \to A^{T}Ax = 0 \to x \in N(A^{T}A)$. Then $x \in N(A^{T}A) \to A^{T}Ax = 0 \to x^{T}A^{T}Ax = (Ax)^{T}(Ax) = \|Ax\|$, which is only 0 for $x \in N(A)$.
+	\end{solution}
+	\begin{takeaways}[1.5]\quad
+	    \begin{itemize}
+			\item Remember that to prove two subspaces are equal, you must show that they are \textbf{both} both contained inside one another.
+			\item  You can always multiply both sides by a vector or matrix that will help you get something into a nice form. Particularly if you have a transpose, look for the ability to convert it into a norm for a matrix, or a dot product for a vector.
+	    \end{itemize}
+	\end{takeaways}
+\end{examplebox}
 
 \subsection{Orthogonality}
 \item Let us recall that for $x, y \in \R^{n}$, i.e. two ``n-component vectors", we can define the dot product (a.k.a. the inner product) as $x^{T}y = \begin{bmatrix}
@@ -673,28 +675,178 @@ For our ``projection matrix'' $P$. Now, let's imagine we define $S= C(A)$ such t
 		\includegraphics[width=\linewidth]{figs/linreg.png}
     \end{wrapfigure}
 	\nident Given a time series of temperature data, we want to calculate the linear regression with our matrix methods. We are going to construct another Vandermonde matrix: this time with a highly overdetermined system. 
-	$$\begin{pmatrix}
+	$$\begin{bmatrix}
 	  1 & y_1 - y_0\\
 	1 & y_2 - y_0\\
 	\vdots & \vdots\\
 	1 & y_m - y_0
-	\end{pmatrix}\begin{pmatrix}
+	\end{bmatrix}\begin{bmatrix}
 	  x_1 \\
 	x_2
-	\end{pmatrix}
-	= \begin{pmatrix}
+	\end{bmatrix}
+	= \begin{bmatrix}
 	  \Delta T_1\\
 	\Delta T_2\\
 	\vdots\\
 	\Delta T_m
-	\end{pmatrix}$$
+	\end{bmatrix}$$
 
 	To find our solution, we must simply minimize the orthogonal projection with the normal equations
 	$$\displaystyle \argmin_{x \in \R^{2}} \|b-Ax\| = (A^{T}A)^{-1}A^{T}b$$
 \end{examplebox}
 	\vspace{0.5cm}
+\subsection{Factorization}
+\item Before we get to factorization, we should define some simple concepts that have already appeared. For instance, the \textbf{rank} of a matrix is simply the number of pivots. Simply, $\operatorname{rank} A = \dim C(A) = \dim C(A^{T})$, which should be intuitive. We can also define the \textbf{rank-nullity theorem} as $\dim N(A) = n-r$ for $r$ pivots and $n$ columns. Although we do not yet have the tools to introduce them all now, in this document we will examine \textbf{four critical factorizations}
+	\begin{align}
+		A &= LU \\
+		A &= QR \\
+		A &= U \Sigma V^{T} \\
+		S &= Q \Lambda Q^{T} 
+	\end{align}
+	\subsubsection*{LU Factorization}
+\item It turns out that matricies can be described in many ways. Some of these ways can help you solve difficult problems. The first of these is the $\bm{LU}$\textbf{-factorization}, which relates $A$ to its upper-triangular form $U$. In the process, it tells us about the inverse of a matrix. 
+\item The crux of the factorization is just Gaussian elimiation of $A \leadsto U$, but storing the coefficients of each row operation in a left-multipliying matrix $L$ 
+\begin{align}
+	A &= \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 2 & 5 & 1 \\ -3 & 1 & -1 \end{bmatrix} \stackrel{r_2 - \color{red}{2}r_1}{\stackrel{r_3 + {\color{red}{3}}r_1}{\longrightarrow}}
+    \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 0 & \color{blue}{1} & 1 \\  0 & 7 & -1 \end{bmatrix} \stackrel{r_3 - \color{red}{7}r_2}{\longrightarrow}
+    \begin{bmatrix} \color{blue}{1} & 2 & 0 \\ 0 & \color{blue}{1} & 1 \\  0 & 0 & \color{blue}{-8} \end{bmatrix} = U  \\
+	\implies L &= \begin{bmatrix} 1 & & \\ \color{red}{+2} & 1 & \\ \color{red}{-3} & \color{red}{+7} & 1 \end{bmatrix}
+	\longrightarrow A = LU
+\end{align} 
+\item And as it turns out it is \textit{much} easier to calculate the inverse of a triangular matrix than a dense matrix. We can rely on $A^{-1} = (LU)^{-1} = U^{-1}L^{-1}$, and then on the kind fact that we can find each of those inverses through back substitution of $U$ and forward-substitution of $L$.
+\item In reality, it's worth noting that it's not \textit{really} $A=LU$, but rather $PA=LU$. We must apply a permutation matrix to $A$ in order to account for the fact that the pivots of $A$ may not be perfectly ordered. We may at some point be forced to do a row swap, and hence apply a permutation at the end of the computation.
+
+\subsubsection*{CR Factorization}
+\item This is not one of our ``critical factorizations''. However, it is useful for us. We learned a moment ago how to compute a basis for $C(A)$. We can use that to write $A = CR$, where $C \in \R^{m \times r}$ consists of \textit{any} basis for $C$. The truth of this should be intuitive by how we have constructed the principle of a columnspace. We can take for example
+	$$A = \begin{bmatrix}
+	  1 & 2 & 3 & 1\\
+	1 & 2 & 5 & -3\\
+	1 & 2 & 7 & -7
+	\end{bmatrix} \leadsto U= \begin{bmatrix}
+	  1 & 2 & 0 & 7\\
+	 &  & 1 & 2\\
+	 &  &  & 
+	\end{bmatrix}$$
+	where clearly $\mathbf{c}_{1}$ and $\mathbf{c}_{3}$ are the pivot rows such that $C(A) = \span \{\mathbf{c_{1}}, \mathbf{c}_{3}\}$. We can from this express a \textit{specific case} of CR-Factorization as
+	$$A = \underbrace{ \begin{bmatrix}
+	  1 & 3\\
+	1 & 5\\
+	1 & 7
+\end{bmatrix}}_C \underbrace{ \begin{bmatrix}
+	  1 & 2 & 0 & 7\\
+	0 & 0 & 1 & 2
+\end{bmatrix}}_R$$
+where, here, $C$ is the \textit{specific} column space basis corresponding to the pivot columns of the original matrix, and $R$ is the reduced row eschelon form of $A$, ommiting the trivial last row. This does not generalize to all solutions for the factorization.
+
+	\subsubsection{QR Factorization}
 	\begin{itemize}
+		\item As we showed earlier, our first basis is rarely a good choice. In order to solve for any solutions we need to do a full elimination. An orthonormal basis is the cleanest basis. But how can we go from our first basis $C(A) = \begin{bmatrix}
+		  \mathbf{a_{1}} & \cdots & \mathbf{a_{n}}
+		\end{bmatrix} \longrightarrow \begin{bmatrix}
+		  \mathbf{q}_{1} & \cdots & \mathbf{q}_{n}
+		\end{bmatrix} = Q$? We can use an algorithm relying on the projection techniques above called \textbf{Gram-Schmidt} orthogonalization.
+	\item We define our first orthonormal vector with respect to the first normalized first basis vector $\mathbf{q}_{1} = \dfrac{a_{1}}{\|a_{1}\|}$. From this, $\mathbf{q}_{2} = \dfrac{\overbrace{(I - \mathbf{q}_{1} \mathbf{q}_{1}^{T})}^{\operatorname{proj}_{\perp}q_{1}}\mathbf{a}_{2}}{\| \ " \ \|} = \dfrac{\mathbf{a}_{2} - \mathbf{q}_{1}(\mathbf{q}_{1}^{T}\mathbf{a}_{2})}{\| \ " \ \|}$. This pattern continues $\mathbf{q}_{3} = \displaystyle \frac{\mathbf{a}_{3} - \mathbf{q}_{1}(\mathbf{q}_{1}^{T} \mathbf{a}_{3}) - \mathbf{q}_{2}(\mathbf{q}_{2}^{T}\mathbf{a}_{3})}{\| \ " \ \|}$.  The denominator is just the norm of the numerator. This gives us a number of orthonormal vectors, but we currently have no way to actually express $A$ in terms of these vectors. We will have to work backwards.
+		\begin{align*}
+			\mathbf{q}_{1} &= \frac{\mathbf{a}_{1}}{\underbrace{\|a_{1}\|}_{r_{11}}} & \mathbf{a}_{1} &= \mathbf{q}_{1}r_{11} \\
+			\mathbf{q}_{2} &= \frac{\mathbf{a}_{2} - \mathbf{q}_{1} \overbrace{\mathbf{q}_{1}^{T}\mathbf{a}_{2}}^{r_{12}}}{\underbrace{\| \ " \ \|}_{r_{22}}} & \mathbf{a}_{2} &= \mathbf{q}_{1}r_{12} + \mathbf{q}_{2} r_{22} \\
+			\mathbf{q}_{3} &= \frac{\mathbf{a}_{3} - \mathbf{q}_{1} \overbrace{q_{1}^{T}\mathbf{a}_{3}}^{r_{13}} - \mathbf{q}_{2} \overbrace{\mathbf{q}_{2}^{T}\mathbf{a}_{3}}^{r_{23}}}{\underbrace{\| \ " \ \|}_{r_{33}}} & \mathbf{a}_{3} &= \mathbf{q}_{1}r_{13} + \mathbf{q}_{2}r_{23} + \mathbf{q}_{3}r_{33}
+		\end{align*}
+		and the pattern so continues, giving us 
+		$$\underbrace{\begin{bmatrix}
+		  \vertbar & \vertbar & \vertbar \\
+		\mathbf{a}_{1} & \mathbf{a}_{2} & \mathbf{a}_{3}\\
+		\vertbar & \vertbar & \vertbar
+		\end{bmatrix}}_{\substack{A \\ m \times n$}}= \underbrace{\begin{bmatrix}
+  \vertbar & \vertbar & \vertbar\\
+\mathbf{q}_{1} & \mathbf{q}_{2} & \mathbf{q}_{3} \\
+\vertbar & \vertbar & \vertbar
+\end{bmatrix}}_{\substack{Q \\ m \times n}} \underbrace{\begin{bmatrix}
+  r_{11} & r_{12} & r_{13}\\
+ & r_{22} & r_{23}\\
+ &  & r_{33}
+\end{bmatrix}}_{\substack{R \\ n \times n}}$$
+\item It is assumed here that $A$ is \textbf{full column rank}. Hence, it will either be square or ``tall''. $R$ is upper-triangular and invertible. $R$ is upper triangular because, as we saw in the Gram-Schmidt algortihm, we construct our basis columns $\mathbf{q}_{i}$ of $Q$ in the first place based on only $\mathbf{a}_{j \leq i}$
+\item For the purposes of 18.C06 as a class, it is much more important to understand the \textit{shapes} and \textit{behavior} of this factorization than work through the computation of the basis and $R$ itself. THe full equations earlier were mostly expressed long-form to give a sense of the pattern how this relates to the projections into each orthogonal vector.
+
+\subsubsection{Singular Value Decomposition}
+\item Ah, finally. The ``factorization to rule them all'', the \textbf{SVD}, which holds the deepest insight we can gain into the behavior of a matrix from it's representation in the four essential subspaces. For a rank-$r$ matrix $A \in \R^{m \times n}$, we express it in it's ``compact form'' as
+
+		$$A = \underbrace{\begin{bmatrix}
+		  u_1 & u_2 & \cdots & u_r
+  \end{bmatrix}}_{\text{orthonormal basis for }C(A)} 
+  \underbrace{\begin{bmatrix}
+\sigma_1 &  & \\
+   & \ddots & \\
+   &  & \sigma_r
+\end{bmatrix}}_{\text{scale factors } \sigma_k > 0}
+\underbrace{
+\begin{bmatrix}
+  v_1 & v_2 & \cdots & v_r
+\end{bmatrix}^T
+}_{\text{orthonormal basis for }C(A^T)} = \hat{U} \hat{\Sigma} \hat{V}^T$$
+\item We call the vectors constituting matrix $\hat{U}$ the \textbf{left-singular} vectors, the vectors of $\hat{V}^{T}$, the \textbf{right-singular} vectors, and the scalar constants of $\hat{\Sigma}$ the \textbf{singular values}. These singular values are in sorted order, from greatest to smallest. This is essential.
+\item In general, it is very difficult to compute this factorization. For now we just won't worry about it. Furthermore, we won't worry \textit{why} it exists either until we discuss eigenvalues and eigenvectors.
+\item So how does this work? Let's consider it's mathematical ``mechanism of action'' so to speak.
+	\begin{enumerate}
+		\item $Ax \to U\Sigma (V^{T} x)$. This first projects $x$ onto $C(A^{T})$. If we recall the geometry of our fundemental subspaces,we see that this operation will project $x$ orthogonal to $N(A)$, which is desirable. 
+		\item In $C(A^{T})$, we scale up the components of $\hat{V}^{T}x$ using our singular-value matrix $\hat{\Sigma}$. This gives us our desired magnitudes. 
+		\item We project into our final $C(A)$ using $\hat{U}$ to give our final vector $Ax$
+	\end{enumerate}
+\item If we look at our expression for the SVD earlier, it might appear how we cold express it in terms of a summation. For rank-$r$ matrix $A$, consider
+	$$A = \hat{U}\hat{\Sigma} \hat{V}^{T} = \sum_{i=1}^{r}\sigma_{i}u_{i}v^{T}_{i}$$
+\item Imagine that we do not take the sum to completion. Instead, we only consider the first terms $k \leq r$. If we recall that the singular values are in sorted order, the \textbf{Eckart-Young Theorem} tells us that the best approximation for $A$ of rank $k$ is $A \approx \displaystyle \sum_{i=1}^{k}\sigma_{i}u_{i}v_{i}^{T}$. The output of this is called the \textbf{truncated SVD}.
+\item If we consider the shapes of our matricies $\hat{U}\hat{\Sigma} \hat{V}^{T}$, we see that $\hat{U},\ \hat{V}^{T}$ are very rarely square. This means that they cannot be invertible, which could be inconvienent. In order to solve this, let's construct the \textbf{full SVD}. Currently the columns of $\hat{U}$ are an orthonormal basis for $C(A)$. Let's append a basis of $N(A^{T})$ such that $U = \begin{bmatrix}
+  U_{r} & U_{\perp}
+\end{bmatrix}$, and a basis of $N(A)$ to $V$ such that $V = \begin{bmatrix}
+  V_{r} & V_{\perp}. 
+\end{bmatrix}$. We don't actually want any component of these vectors in our output, so we will modify $\hat{\Sigma}$ with the appropriate shape to 0 the components in the complementary spaces.
+$$A = \underbrace{\begin{bmatrix}
+  u_{r} & \cdots & u_{m}
+  \end{bmatrix}}_{\substack{U \\ m \times m}} \underbrace{\begin{bmatrix}
+  \sigma_{1} &  &  &  & \\
+ & \ddots &  &  & \\
+ &  & \sigma_{r} & 0 & \cdots\\
+ &  & 0 & 0 & \cdots \\
+ &  & \vdots & \vdots & \ddots
+\end{bmatrix}}_{\substack{\Sigma \\  m \times n}} \underbrace{\begin{bmatrix}
+  v_{1} & \cdots & v_{n}
+\end{bmatrix}^{T}}_{\substack{V^{T} \\ n \times n} $$
+for $\Sigma$ with $n-r$ extra columns of 0's and $m-r$ extra rows of 0's compared to $\hat{\Sigma}$.
 \end{itemize}
 
+\begin{ideabox}[Norms and Transformations]
+	\begin{wrapfigure}{l}{0.42\textwidth}
+	    \includegraphics[width=0.4\textwidth]{figs/ellipse.png}
+	\end{wrapfigure}
+	\ndent A useful way to think of linear transformations on an orthonormal basis is an operator that transforms a unit circle into an ellipsoid, as the figure shows. This visualization is also the key to connecting the SVD to the eigenvectors of a matrix, which is perhaps the deepest connection in all of linear algebra. 
+	\\\\
+\noindent We also can define here the \textbf{operator norm}, which is the largest amount by which $A$ can stretch its orthonormal basis. For our case of SVD, the operator norm is always just the largest singular value. \\ \\
+\noindent This leads naturally to our formal definition of a \textbf{norm}. 
+	Given a vector space $V$ a \textbf{norm} is a map $\vec{v} \in V \mapsto \|\vec{v}\| \elem \mathbb{R}$ satisfying
+	\begin{enumerate}
+		\item	\textbf{Non-negative: }$ \|\vec{v}\| \geq 0$. ($=0$ iff $\vec{v}=\vec{0}$) 
+		\item \textbf{Scaling: }$ \|\alpha \vec{v}\| = \alpha \|\vec{v}\|$
+		\item \textbf{Triangle Inequality: } $\|\vec{v_1} + \vec{v_2}\| \leq \|\vec{v_1}\| + \|\vec{v_2}\|$
+	\end{enumerate}
+\end{ideabox}
+\begin{examplebox}[1.7]\quad
+	\noindent Using this definition let's prove our lemma about the operator norm
+	$$\|Ax\|_0 = \displaystyle \max_{x \in \R^{n}} \frac{\|Ax\|}{\|x\|} = \sigma_{\texttt{max}}$$. 
+	\begin{solution}[1.7]\quad
+		\begin{enumerate}
+			\item First let's first prove $\|Ax \| \geq 0$. $\|Ax\| = (Ax)^{T}(Ax) = x^{T}A^{T}A^{T} = x^{T}V\Sigma U^{T}U \Sigma V^{T}x = v^{T}V \Sigma^{2}V^{T}x = (V^{T}x)^{T}\Sigma^{2}(V^{T}x)$. Let's define $c = V^{T}x$. Then, we can decompose the system down to a sum of vector dot products such that $c^{T}\Sigma^{2}c = \displaystyle\sum_{i=1}^{r}\sigma_{i}^{2}c_{i}^{2}$.
+			\item By the triangle equality, $\|x \| \geq \| V V^{T} x\|$ since $VV^{T}$ is just a projection matrix that cannot increase the norm of $x$. From this we can  say $\|V V^{T}x\| = (VV^{T}x)^{T}(VV^{T}x) = x^{T}VV^{T}VV^{T}x = x^{T}VV^{T}x = (V^{T}x)^{T}(V^{T}x)$ which, by the $c$ we defined earlier equals $c^{T}c$. If we express it simarly as a sum, $\|x \| \geq c^{T}c = \displaystyle\sum_{j=1}^{r}c_{j}^{2}$.
+			\item Putting the last two steps together, $\displaystyle \frac{\|Ax\|}{\|x\|} = \sqrt{ \frac{\sum \sigma_{i}^{2}c_{i}^{2}}{\sum c_{i}^{2}} } = \sqrt{\sigma_{\texttt{max}}^{2}} = \sigma_{\texttt{max}}$ 
+		\end{enumerate}
+	    
+	\end{solution}
+	\begin{takeaways}[1.7]\quad
+		\begin{itemize}
+			\item The decomposition of $\Sigma$ into the sum of singular values is a very tricky lifesaver. 
+			\item You can get a lot out of expressing the 2-norm in terms of $x^{T}x$. Things often cancel which will lead you with an interesting expression.
+		\end{itemize}
+	    
+	\end{takeaways}
+\end{examplebox}
 \end{document}
 
