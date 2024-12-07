@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.8.16)  4 DEC 2024 11:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.8.16)  7 DEC 2024 02:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -734,22 +734,22 @@ I'm going to ignore the # sign you just used.
 ) (./template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -785,7 +785,7 @@ LaTeX Font Info:    ... okay on input line 24.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 24.
+LaTeX Info: Redefining \microtypecontext on input line 27.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1100.
@@ -793,7 +793,7 @@ Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 10, shrink: 10, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 24.
+LaTeX Info: Redefining \showhyphens on input line 27.
 Package microtype Info: Tracking enabled.
 Package microtype Info: Using default tracking set `smallcaps'.
 Package microtype Info: Adjustment of interword spacing enabled.
@@ -822,7 +822,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \AtBeginShipoutBox=\box79
-Package hyperref Info: Link coloring ON on input line 24.
+Package hyperref Info: Link coloring ON on input line 27.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -832,9 +832,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count326
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
  (./template.out) (./template.out)
 \@outlinefile=\write6
 \openout6 = `template.out'.
@@ -850,13 +850,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -871,8 +871,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 \openout7 = `template.toc'.
 
 
-./template.tex:65: Undefined control sequence.
-l.65 ... each $1 \leq i \leq m$ and $1 \leq j \ldq
+./template.tex:68: Undefined control sequence.
+l.68 ... each $1 \leq i \leq m$ and $1 \leq j \ldq
                                                    p$ we have
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -885,16 +885,16 @@ and I'll forget about whatever was undefined.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/sc' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 113.
+(Font)              using `OT1/cmss/bx/n' instead on input line 116.
 
 
-./template.tex:122: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+./template.tex:125: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
 
 See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\begin{examplebox}[1.1]
+l.125 	\begin{examplebox}[1.1]
                               
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
@@ -902,22 +902,22 @@ Pretend that you're Hercule Poirot: Examine all clues,
 and deduce the truth by order and method.
 
 
-./template.tex:122: LaTeX Error: No counter 'example' defined.
+./template.tex:125: LaTeX Error: No counter 'example' defined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.122 	\begin{examplebox}[1.1]
+l.125 	\begin{examplebox}[1.1]
                               
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./template.tex:122: Undefined control sequence.
+./template.tex:125: Undefined control sequence.
 <recently read> \theexample 
                             
-l.122 	\begin{examplebox}[1.1]
+l.125 	\begin{examplebox}[1.1]
                               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -927,33 +927,33 @@ and I'll forget about whatever was undefined.
 
 [2]
 
-./template.tex:180: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+./template.tex:183: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
 
 See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 	\begin{examplebox}[1.2]
+l.183 	\begin{examplebox}[1.2]
                               \quad
 (That was another \errmessage.)
 
 
-./template.tex:180: LaTeX Error: No counter 'example' defined.
+./template.tex:183: LaTeX Error: No counter 'example' defined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 	\begin{examplebox}[1.2]
+l.183 	\begin{examplebox}[1.2]
                               \quad
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./template.tex:180: Undefined control sequence.
+./template.tex:183: Undefined control sequence.
 <recently read> \theexample 
                             
-l.180 	\begin{examplebox}[1.2]
+l.183 	\begin{examplebox}[1.2]
                               \quad
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -962,157 +962,525 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 251--255
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
 
  []
 
 [5] [6]
-
-./template.tex:404: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.404 \begin{examplebox}[1.3]
-                             \quad
-(That was another \errmessage.)
-
-
-./template.tex:404: LaTeX Error: No counter 'example' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.404 \begin{examplebox}[1.3]
-                             \quad
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-./template.tex:404: Undefined control sequence.
-<recently read> \theexample 
-                            
-l.404 \begin{examplebox}[1.3]
-                             \quad
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[7]
-
-./template.tex:434: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.434 \begin{examplebox}[1.4]
-                             \quad
-(That was another \errmessage.)
-
-
-./template.tex:434: LaTeX Error: No counter 'example' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.434 \begin{examplebox}[1.4]
-                             \quad
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-./template.tex:434: Undefined control sequence.
-<recently read> \theexample 
-                            
-l.434 \begin{examplebox}[1.4]
-                             \quad
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[8]
-./template.tex:468: Missing $ inserted.
+./template.tex:449: Missing $ inserted.
 <inserted text> 
                 $
-l.468 \subsubsection
-                    *{CR Factorization}
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./template.tex:468: Missing } inserted.
+./template.tex:449: Missing $ inserted.
 <inserted text> 
-                }
-l.468 \subsubsection
-                    *{CR Factorization}
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./template.tex:468: Extra }, or forgotten \endgroup.
+./template.tex:449: Missing $ inserted.
+<inserted text> 
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:449: Missing $ inserted.
+<inserted text> 
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:449: Missing $ inserted.
+<inserted text> 
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:449: Missing $ inserted.
+<inserted text> 
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:449: Missing $ inserted.
+<inserted text> 
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:449: Missing $ inserted.
+<inserted text> 
+                $
+l.449 ...}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}}
+                                                   \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./template.tex:460: Package tikz Error: A node must have a (possibly empty) label text.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.460 ..., thick] (-1,0.5) -- (3,2.5) node[right];
+                                                  
+(That was another \errmessage.)
+
+
+./template.tex:468: Package tikz Error: A node must have a (possibly empty) label text.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.468 \end
+          {tikzpicture} & \quad\raisebox{5em}{
+(That was another \errmessage.)
+
+
+./template.tex:468: Package tikz Error: Giving up on this path. Did you forget a semicolon?.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.468 \end{tikzpicture}
+                        & \quad\raisebox{5em}{
+(That was another \errmessage.)
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:482: Missing $ inserted.
+<inserted text> 
+                $
+l.482 }
+       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:484: Missing $ inserted.
+<inserted text> 
+                $
+l.484 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:484: Missing } inserted.
+<inserted text> 
+                }
+l.484 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:484: Display math should end with $$.
+<to be read again> 
+                   \@@par 
+l.484 
+      
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+./template.tex:484: Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.468 \subsubsection
-                    *{CR Factorization}
+l.484 
+      
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-[9]
+[7]
 
-./template.tex:472: LaTeX Error: \begin{itemize} on input line 274 ended by \end{document}.
+./template.tex:487: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.487 \begin{examplebox}[1.3]
+                             \quad
+(That was another \errmessage.)
+
+
+./template.tex:487: LaTeX Error: No counter 'example' defined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.472 \end{document}
-                    
+l.487 \begin{examplebox}[1.3]
+                             \quad
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 472.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 472.
-(./template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 472.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 472.
+./template.tex:487: Undefined control sequence.
+<recently read> \theexample 
+                            
+l.487 \begin{examplebox}[1.3]
+                             \quad
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./template.tex:517: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.517 \begin{examplebox}[1.4]
+                             \quad
+(That was another \errmessage.)
+
+
+./template.tex:517: LaTeX Error: No counter 'example' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.517 \begin{examplebox}[1.4]
+                             \quad
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./template.tex:517: Undefined control sequence.
+<recently read> \theexample 
+                            
+l.517 \begin{examplebox}[1.4]
+                             \quad
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[8] [9]
+./template.tex:562: Misplaced \span.
+l.562 ...re the pivot rows such that $C(A) = \span
+                                                   \{\mathbf{c_{1}}, \mathbf...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[10]
+
+./template.tex:585: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.585 	\begin{examplebox}[1.5]
+                              
+(That was another \errmessage.)
+
+
+./template.tex:585: LaTeX Error: No counter 'example' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.585 	\begin{examplebox}[1.5]
+                              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./template.tex:585: Undefined control sequence.
+<recently read> \theexample 
+                            
+l.585 	\begin{examplebox}[1.5]
+                              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./template.tex:589: Missing $ inserted.
+<inserted text> 
+                $
+l.589 			  v_
+             {1} & v_{2} & v_{3}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:590: Missing $ inserted.
+<inserted text> 
+                $
+l.590 			\end{bmatrix}^T, $w = \begin{bmatrix}
+                                              
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./template.tex:592: Missing $ inserted.
+<inserted text> 
+                $
+l.592 			\end{bmatrix}
+                      ^T$ such that $v \cdot w = 0$ as given. Therefore, $V^...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./template.tex:592: Missing $ inserted.
+<inserted text> 
+                $
+l.592 			\end{bmatrix}^
+                       T$ such that $v \cdot w = 0$ as given. Therefore, $V^...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./template.tex:604: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.604 	\begin{examplebox}[1.6]
+                              \quad\\
+(That was another \errmessage.)
+
+
+./template.tex:604: LaTeX Error: No counter 'example' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.604 	\begin{examplebox}[1.6]
+                              \quad\\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./template.tex:604: Undefined control sequence.
+<recently read> \theexample 
+                            
+l.604 	\begin{examplebox}[1.6]
+                              \quad\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[11]
+Overfull \hbox (12.87349pt too wide) in paragraph at lines 644--645
+[][] 
+ []
+
+./template.tex:647: Missing number, treated as zero.
+<to be read again> 
+                   I
+l.647 \parshape I
+                 f we imagine some $n$-dimensional subspace $S \subseteq \R^...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+./template.tex:656: Package amsmath Error: Erroneous nesting of equation structures;
+(amsmath)                trying to recover with `aligned'.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.656 	\end{align*}}
+                    
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[12]
+./template.tex:662: Undefined control sequence.
+l.662 ...{T} = P \hspace{2cm} \text{Proof.  } \qty
+                                                  ((A^{T}A)^{-1}A^{T}b)^{T} ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./template.tex:662: Undefined control sequence.
+l.662 ...^{T}A)^{-1}A^{T}b)^{T} = (A^{T})^{T} \qty
+                                                  ((A^{T}A)^{-1})^{T} A^{T} ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./template.tex:672: Package pgfkeys Error: I do not know the key '/tcb/overlay broken and last', to which you passed ' \draw [formalframe] ([xshift=-2pt]interior.south west) -- ([xshift=3pt]interior.south west); ', and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.672 		\begin
+              {wrapfigure}{l}{0.4\textwidth}
+(That was another \errmessage.)
+
+<figs/linreg.png, id=171, 418.4433pt x 327.3831pt>
+File: figs/linreg.png Graphic file (type png)
+<use figs/linreg.png>
+Package pdftex.def Info: figs/linreg.png  used on input line 673.
+(pdftex.def)             Requested size: 172.69937pt x 135.11713pt.
+./template.tex:675: Undefined control sequence.
+l.675 	\nident
+               Given a time series of temperature data, we want to calculate...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./template.tex:697: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.697 \end{itemize}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[13 <./figs/linreg.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 699.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 699.
+ (./template.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 699.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 699.
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 42269610E42ACC036BB29732EA20BB5C;232.
+(rerunfilecheck)             Checksum: 1979A885F3768F9488414826DF5883D1;304.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 472.
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 274 (\begingroup)
-### bottom level 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 699.
+ ) 
 Here is how much of TeX's memory you used:
- 27567 strings out of 481239
- 539377 string characters out of 5920377
- 1050927 words of memory out of 5000000
- 42155 multiletter control sequences out of 15000+600000
- 546567 words of font info for 93 fonts, out of 8000000 for 9000
+ 27820 strings out of 481239
+ 544376 string characters out of 5920377
+ 1050954 words of memory out of 5000000
+ 42387 multiletter control sequences out of 15000+600000
+ 546777 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,21n,87p,956b,1200s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on template.pdf (9 pages, 237030 bytes).
+ 67i,21n,87p,977b,1206s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on template.pdf (13 pages, 308899 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 202 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
- 20013 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 91 named destinations out of 1000 (max. 500000)
+ 20026 words of extra memory for PDF output out of 20736 (max. 10000000)
 

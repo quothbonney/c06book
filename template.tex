@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+
 \usepackage[margin=1in]{geometry}
 \usepackage{amssymb, amsthm, amsmath}
 \makeatletter
@@ -9,11 +10,13 @@
   
 \newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
 \newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+\newcommand*{\wrapitem}{\apptocmd{\labelenumi}{\hskip\leftmargin}{}{}\item\apptocmd{\labelenumi}{\hskip-\leftmargin}{}{}}
 
 \makeatother
 
 \usepackage{wrapfig}
 \usepackage{quick}
+\usepackage{graphicx}
 
 
 \linespread{1.03} % give a little extra room
@@ -401,6 +404,86 @@ In $U$ we can easily identify that $c_{1}$ and $c_{2}$ contain our pivots. There
 	\end{bmatrix} \Biggl\}
 \end{align}
 
+\subsubsection*{Polynomial fitting}
+\item The topic of optimization begins with polynomial fitting. This is a task we will revisit extensively in this course. A simple way to fit a polynomial is with a \textbf{Vandermode Matrix}. A degree-2 polynomial follows a form with linear coefficients $p(x) = c_{0} + c_{1}x + c_{2}x^{2}$, leading to the intuition
+	$$
+	\underbrace{\begin{bmatrix}
+	  1 & x_{1} & x_{1}^{2}\\
+	1 & x_{2} & x_{2}^{2}\\
+	1 & x_{3} & x_{3}^{2}
+\end{bmatrix}}_{A} \begin{bmatrix}
+	  c_{0}\\
+	c_{1}\\
+	c_{2}
+	\end{bmatrix} = \begin{bmatrix}
+	 y_{0}  \\
+	 y_{1} \\
+	 y_{2}
+	\end{bmatrix}
+$$
+\item This actually gives us a great way to visualize overdetermined and underdetermined systems.
+	 $$\begin{aligned}
+\begin{tikzpicture}[scale=0.85] 
+    \draw[->] (-2,0) -- (2,0) node[right] {$x$}; 
+    \draw[->] (0,-1) -- (0,3) node[above] {$y$}; 
+    \fill (-1,1) circle (1.5pt);
+    \fill (0,0) circle (1.5pt);
+    \fill (1,1) circle (1.5pt);
+    \draw[blue, thick] plot[domain=-1.5:1.5] (\x,{\x*\x});
+\end{tikzpicture}
+& \quad\raisebox{5em}{
+\begin{bmatrix} 
+1 & x_{1} & x_{1}^{2}\\
+1 & x_{2} & x_{2}^{2}\\
+1 & x_{3} & x_{3}^{2}
+\end{bmatrix}
+\begin{bmatrix}
+c_{0}\\
+c_{1}\\
+c_{2}
+\end{bmatrix} =
+\begin{bmatrix}
+y_{0} \\
+y_{1} \\
+y_{2}
+\end{bmatrix} \to \underbrace{A \in \R^{3 \times 3}}_{\text{1-sol}} \to N(A) = \{ \bm{0} \}} \\
+	\begin{tikzpicture}[scale=0.75]
+    % Axes
+    \draw[->] (-2,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+    
+    % Two fixed points
+    \fill (0,1) circle (2pt) node[left] {$P_1$};
+    \fill (2,2) circle (2pt) node[right] {$P_2$};
+    
+    % The unique line
+    \draw[blue, thick] (-1,0.5) -- (3,2.5) node[right];
+    
+    % Multiple parabolas passing through the points
+    \draw[red] plot[domain=-1:3] (\x,{1 + 0.25*\x^2});
+    \draw[red] plot[domain=-1:3] (\x,{1 + 2*\x - 0.75*\x^2});
+    
+    % Label
+    \node[red] at (3,4)
+\end{tikzpicture} & \quad\raisebox{5em}{
+	\begin{bmatrix}
+	  1 & x_{1} & x_{1}^{2}\\
+	1 & x_{2} & x_{2}^{2}
+	\end{bmatrix} \begin{bmatrix}
+	  c_{0}\\
+	c_{1}\\
+	c_{2}
+	\end{bmatrix}
+	= \begin{bmatrix}
+	  y_{0}\\
+	y_{1}
+	\end{bmatrix}
+	\to \underbrace{A \in \R^{2 \times 3}}_{\text{underdetermined}} \to N(A) \neq \{ \bm{0} \}
+}
+\end{aligned}
+
+\item As we can see with the figures, if we have two points, we can define exaclty one line. If we have 3 points, we can define exactly 1 parabola. This is a formalization of the intuitive fact that we can draw an infinte number of parabolas to fit two points.
+
 \begin{examplebox}[1.3]\quad
 	\begin{enumerate}
 		\item If the zero vector is in $C(A)$, then the columns of $A$ are linearly dependent.
@@ -444,7 +527,7 @@ $AB = 0$ (the zero matrix) for matricies $A$ and $B$. If the null space of $\_\_
 \end{solution} 
 \end{examplebox}
 
-\subsection{Factorization}
+\subsection{Factorization (pt. 1)}
 \item Before we get to factorization, we should define some simple concepts that have already appeared. For instance, the \textbf{rank} of a matrix is simply the number of pivots. Simply, $\operatorname{rank} A = \dim C(A) = \dim C(A^{T})$, which should be intuitive. We can also define the \textbf{rank-nullity theorem} as $\dim N(A) = n-r$ for $r$ pivots and $n$ columns. Although we do not yet have the tools to introduce them all now, in this document we will examine \textbf{four critical factorizations}
 	\begin{align}
 		A &= LU \\
@@ -464,10 +547,154 @@ $AB = 0$ (the zero matrix) for matricies $A$ and $B$. If the null space of $\_\_
 \end{align} 
 \item And as it turns out it is \textit{much} easier to calculate the inverse of a triangular matrix than a dense matrix. We can rely on $A^{-1} = (LU)^{-1} = U^{-1}L^{-1}$, and then on the kind fact that we can find each of those inverses through back substitution of $U$ and forward-substitution of $L$.
 \item In reality, it's worth noting that it's not \textit{really} $A=LU$, but rather $PA=LU$. We must apply a permutation matrix to $A$ in order to account for the fact that the pivots of $A$ may not be perfectly ordered. We may at some point be forced to do a row swap, and hence apply a permutation at the end of the computation.
-$
+
 \subsubsection*{CR Factorization}
-\item We learned a moment ago how to compute a basis for $C(A)$. We can use that to write $A = CR$, where $C \in \R^{m \times r}$ consists of \textit{any} basis for $C$. Then, the columns of $R$ are a basis for $C(A^{T})$. This has to be computed case-by-case, and it's computation is not of particular interest to us right now. 
-\item 
+\item This is not one of our ``critical factorizations''. However, it is useful for us. We learned a moment ago how to compute a basis for $C(A)$. We can use that to write $A = CR$, where $C \in \R^{m \times r}$ consists of \textit{any} basis for $C$. The truth of this should be intuitive by how we have constructed the principle of a columnspace. We can take for example
+	$$A = \begin{bmatrix}
+	  1 & 2 & 3 & 1\\
+	1 & 2 & 5 & -3\\
+	1 & 2 & 7 & -7
+	\end{bmatrix} \leadsto U= \begin{bmatrix}
+	  1 & 2 & 0 & 7\\
+	 &  & 1 & 2\\
+	 &  &  & 
+	\end{bmatrix}$$
+	where clearly $\mathbf{c}_{1}$ and $\mathbf{c}_{3}$ are the pivot rows such that $C(A) = \span \{\mathbf{c_{1}}, \mathbf{c}_{3}\}$. We can from this express a \textit{specific case} of CR-Factorization as
+	$$A = \underbrace{ \begin{bmatrix}
+	  1 & 3\\
+	1 & 5\\
+	1 & 7
+\end{bmatrix}}_C \underbrace{ \begin{bmatrix}
+	  1 & 2 & 0 & 7\\
+	0 & 0 & 1 & 2
+\end{bmatrix}}_R$$
+where, here, $C$ is the \textit{specific} column space basis corresponding to the pivot columns of the original matrix, and $R$ is the reduced row eschelon form of $A$, ommiting the trivial last row. This does not generalize to all solutions for the factorization.
+
+\subsection{Orthogonality}
+\item Let us recall that for $x, y \in \R^{n}$, i.e. two ``n-component vectors", we can define the dot product (a.k.a. the inner product) as $x^{T}y = \begin{bmatrix}
+		x_{1} & x_{2} & \cdots
+	\end{bmatrix} \vthreeC{y_{1}}{y_{2}}{\vdots} = x_{1}y_{1}+ x_{2}y_{2} + \cdots$. From this we can define the $L^{2}$ \textbf{norm} or length of $x$ as $\|x\| = \sqrt{x^{T}x} = \sqrt{x_{1}^{2} + x_{2}^{2} + \cdots}$.
+\item Also we can recall the key property that a matrix transpose moves the matrix to the other side of a dot product. For example $u \cdot (Av) = u^{T}Av = (A^{T}u)^{T}v = (A^{T}u)\cdot v$
+\item In the two most common cases, orthogonal, and parallel, we will find nice properties. For $x \perp y$, $x^{T}y = 0$; for $x \parallel y$, $x^{T}y = \|x\| \|y\|$. 
+\item In our original basis, we made no promises about what vectors defined the basis of the column space. This means that in order to solve $Ax=b$, we need to solve the whole system naively, which is computationally expensive. If we were to have a nicer basis, we could optimize some of that computation and inelegance. Imagine we have an \textbf{orthonormal basis} for a matrix. That is, the basis vectors of the matrix are orthogonal, and have magnitude 1. We will work on the details of how to compute one of these bases soon. For basis vectors $\mathbf{q}_{1}, \mathbf{q}_{2}$, we could define $\mathbf{b} = c_{1} \mathbf{q}_{1} + c_{2} \mathbf{q}_{2}$ and $\| \mathbf{b} \| = b^{T}b = (c_{1} \mathbf{q}_{1} + c_{2} \mathbf{q}_{2})^{T} (c_{1} \mathbf{q}_{1} + c_{2} \mathbf{q}_{2}) = c_{1}^{2} + c_{2}^{2}$, or, the Pythagorean Theorem.
+\item In matrix form $Q = \begin{bmatrix}
+		\mathbf{q}_{1} & \mathbf{q}_{2}
+	\end{bmatrix}$, we have desirable properties such as $Q^{T}Q = I$, assuming that $Q$ is square, meaning that the transpose of $Q$ is it's inverse! If $Q$ is \textbf{not square}, we can say a lot less about it. It does not follow $Q^{T} = Q^{-1}$ and $Q^{T}Q \neq QQ^{T}$.
+\item We can also define orthogonal subspaces $S_{1}$ and $S_{2}$ of $V$ if every vector in $S_{1}$ is orthogonal to every vector in $S_{2}$, or $x^{T}y = 0 \ \forall \ x \in S_{1}, y \in S_{2}$. Also, $\dim S_{1} + \dim S_{2} \leq \dim V$.
+\item Finally, we can define orthogonal complements of subspaces $S^{\perp}$ for the subspace containing \textit{all} vectors in $V$ that are othogonal to \textit{every} vector in $S$. Therefore, $S^{\perp}$ is the largest subspace that is orthogonal to $S$. It is formally defined as $S^{\perp} = \{ w \in V : w^{T}x = 0 \text{ for any } x \in S\}$
+	\begin{examplebox}[1.5]
+	\noindent Denote a subspace $V = \Biggl\{\vthreeC{v_{1}}{v_{2}}{v_{3}} : 2v_{1} + 3v_{2} + 5v_{3}=0\Biggl\}$. Find $V^{\perp}$ (give a basis). Can you relate $V$ and $V^{\perp}$ to column and/or null spaces of some matrix. 
+		\begin{solution}[1.5]\quad\\
+			As we defined $V^{\perp} = \{w : w\cdot v = 0 \text{ for any } v \in V\}$. For $v = \begin{bmatrix}$
+			  v_{1} & v_{2} & v_{3}
+			\end{bmatrix}^T, $w = \begin{bmatrix}
+			  2 & 3 & 5
+			\end{bmatrix}^T$ such that $v \cdot w = 0$ as given. Therefore, $V^{\perp} = \operatorname{span} \Biggl\{ \vthreeC{2}{3}{5}\Biggl\}$. Alternatively $A \equiv \begin{bmatrix}
+			  2 & 3 & 5
+			\end{bmatrix}$ such that $Av = 0 \implies V = N(A)$ and $V^{\perp} = C(A^{T})$.
+		    
+		\end{solution}
+		\begin{takeaways}[1.5]\quad
+		    \begin{itemize}
+				\item Remember the formal definition of the orthogonal subspace: it is just the subspace for which the dot product with \textit{anything} is 0. 
+				\item This orthogonal subspace is highly related to the nullspace. Always be looking for the nullspace and columnspace connctions.
+		    \end{itemize}
+		\end{takeaways}
+	\end{examplebox}
+	\begin{examplebox}[1.6]\quad\\
+		Suppose we have a subspace $\mathcal{S}$ with orthogonal (but not necessarily orthonormal) basis $\{ v_1, \cdots v_k\}$
+		$$v = \sum_{i=1}^{k} \alpha_{i}v_{i}$$
+	   by the definition of a basis, for some cosntants $\alpha_1, \ldots \alpha_k$. Determine every $\alpha_{j}$ in terms of $v_{i}, \ldots v_{k}$. Will this work if the basis is not orthogonal? If we put the vectors $v_{i}$ as columns of a marix $V = \begin{bmatrix}
+	     v_{1} & \cdots & v_{k}
+	   \end{bmatrix}$, what special form does $V^{T}V$ have?
+	   \begin{solution}[1.6]\quad\\
+	       In order to find $\alpha_{j}$ specifically, left multiply by $v_{j}^{T}$ such that 
+		   $$v_{j}^{T}v = \sum_{i=1}^{k} v_{j}^{T}(\alpha_{i}v_{i}) = \sum_{i=1}^{k} \alpha_{i} v_{j}^{T}v^{i} = \alpha_{j} \|v_{j}\|$$
+		   The genius of muliplying by $v_{j}^{T}$ is that for all terms $i \neq j$, $v_{j}^{T}v_{i} = 0$ such that we are able to get rid of that nasty summation. This leads easily to $\alpha_{j} = \dfrac{v_{j}^{T}v}{\|v_{j}\|^2}$. Then if we take the matrix $V$, we will end with just 
+		   $$V^{T}V = \begin{bmatrix}
+		     \|v_{1}\| &  &  & \\
+		    & \|v_{2}\| &  & \\
+		    &  & \ddots & \\
+		    &  &  & \|v_{k}\|
+		   \end{bmatrix}$$
+		   since $V$ forms a linear multiple of the basis vectors.
+	   \end{solution}
+	   \begin{takeaways}[1.6]\quad
+		   \begin{itemize}
+			   \item The trick of left-multipling by $v_{j}^{T}$ is tricky as hell here yet. A good problem solving technique is to look for what you're trying to isolate and then the conditions that can help you simplify the opaque linear algebra expressions.
+				\item For the basis vectors, it's important to realize this property of $v^{T}V$ that we will revisit on the section on symmetry later.
+		   \end{itemize} 
+	   \end{takeaways}
+	\end{examplebox}
+\end{itemize}
+	\subsubsection*{Projections}
+
+	\begin{wrapfigure}{l}{0.34\textwidth}
+		\begin{tikzpicture}[scale=2.333]
+	\clip (-0.6, -0.5) rectangle (2.0, 1.5);
+	 \path (-0.6, -0.5) rectangle (2.0, 1.5); % Explicit bounding box
+	\draw (-1.5, 0) -- (1.5, 0);    
+	\draw (0, 1.5) -- (0, -1.5);
+	\draw [thick, blue] (45:-1.8cm) -- node[very near end, anchor=west] {$S=C(A)$} (45:1.8cm);
+	\draw [thick, dotted, blue] (-45:-1.0cm) -- node[near start, anchor=south, yshift=2mm] {$S^{\perp}$} (-45:0.7cm);
+	\draw [->] (0, 0) -- node[very near end, anchor=east] {$\vec{b}$} (75: 1.3cm);
+	\coordinate (t) at (intersection of 75:1.3cm -- ++ 15:1.3cm and 0,0--45:2cm);
+	\draw [->] (75:1.3cm) -- node[midway, anchor=south] {$\vec{e}$} (t);
+	\draw [thick, red, -> ] (0,0)-- node[midway, anchor=west] {$\vec{p} = A \hat{x}$} (t);	
+\end{tikzpicture}
+\end{wrapfigure}
+
+\parshape If we imagine some $n$-dimensional subspace $S \subseteq \R^{n}$, we can define a vector $\mathbf{b}$ that exists outside the subspace. We can also define a vector $\mathbf{p}$, the orthogonal projection of $\mathbf{b}$ onto $S$. Here we could say 
+$$\mathbf{b} = \underbrace{\mathbf{p}}_{\in S} + \underbrace{\mathbf{e}}_{\in S^{\perp}} = P \mathbf{b} + (I -P) \mathbf{b}$$
+For our ``projection matrix'' $P$. Now, let's imagine we define $S= C(A)$ such that $S^{\perp}= N(A^{T})$. Then, $\mathbf{p} = A \hat{x} \in C(A)$, and $\hat{x}$ is the closeset solution to $\mathbf{b}$. Therefore, $\mathbf{e} = \mathbf{b} - A\hat{x} \in N(A^{T}) \to A^{T} (b-A\hat{x}) \to A^{T}b = A^{T}A\hat{x}$. From this, we can define three \textbf{normal equations}. 
+\begin{equation*}
+\boxed{
+\begin{align*}
+			\hat{x} &= (A^{T}A)^{-1}A^{T}b \\
+			\mathbf{p} &= A \hat{x} = P \mathbf{b} \\
+			P &= A(A^{T}A)^{-1}A^{T}
+	\end{align*}}
+\end{equation*}
+\begin{itemize}
+	\item We can also define a handful of neat properties about the projection matrix $P$.
+		\begin{enumerate}
+			\item $P^{2} = P \hspace{2cm} \text{Proof.  } A(A^{T}A)^{-1}(A^{T}A)(A^{T}A)^{-1}A^{T} = P$
+			\item $P^{T} = P \hspace{2cm} \text{Proof.  } \qty((A^{T}A)^{-1}A^{T}b)^{T} = (A^{T})^{T} \qty((A^{T}A)^{-1})^{T} A^{T} = P$
+			\item $C(P)= C(A)$
+			\item $N(P)= C(A)^{\perp} = N(A^{T})$
+			\item $I-P$ is the projection matrix onto $N(A^{T})$
+
+		\end{enumerate}
+	\item Our projection vector $\mathbf{p}$ is going to minimize the norm $\|b-Ax\|$ as should be clear in the geometry above. Notably, it won't necessarily come upwith an \textit{exact solution}. Rather it is able to find the closest solution when there is no absolute solution. This is the beginning of our forees into optimization. As an example, let's examine the simplest optimization problem: least squares.
+\end{itemize}
+
+\begin{examplebox}
+		\begin{wrapfigure}{l}{0.4\textwidth}
+		\includegraphics[width=\linewidth]{figs/linreg.png}
+    \end{wrapfigure}
+	\nident Given a time series of temperature data, we want to calculate the linear regression with our matrix methods. We are going to construct another Vandermonde matrix: this time with a highly overdetermined system. 
+	$$\begin{pmatrix}
+	  1 & y_1 - y_0\\
+	1 & y_2 - y_0\\
+	\vdots & \vdots\\
+	1 & y_m - y_0
+	\end{pmatrix}\begin{pmatrix}
+	  x_1 \\
+	x_2
+	\end{pmatrix}
+	= \begin{pmatrix}
+	  \Delta T_1\\
+	\Delta T_2\\
+	\vdots\\
+	\Delta T_m
+	\end{pmatrix}$$
+
+	To find our solution, we must simply minimize the orthogonal projection with the normal equations
+	$$\displaystyle \argmin_{x \in \R^{2}} \|b-Ax\| = (A^{T}A)^{-1}A^{T}b$$
+\end{examplebox}
+	\vspace{0.5cm}
+	\begin{itemize}
+\end{itemize}
 
 \end{document}
 
