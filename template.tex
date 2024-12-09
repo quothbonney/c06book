@@ -14,7 +14,9 @@
 
 \makeatother
 
+\usepackage{physics}
 \usepackage{wrapfig}
+\usepackage{mathtools}
 \usepackage{quick}
 \usepackage{graphicx}
 
@@ -43,6 +45,7 @@
 
 % make table of contents
 \microtoc
+
 \section{Linear Algebra}
 This document assumes you already have a reasonable familiarity with the most basic ideas of linear algebra (i.e. What is a matrix? What is matrix multiplication? Why would one be compelled to multiply a matrix?). From hence, we shall begin with the beginning.
 \subsection{The Basics}
@@ -61,7 +64,7 @@ This document assumes you already have a reasonable familiarity with the most ba
 0 & -2 & -2 & -8\\
 0 & 0 & 1 & 0
 \end{bmatrix}$$
-Here we have gone from the augmented matrix $[ A | b]$ to a much nicer $[U | b]$. By recalling that matricies are just an abstraction of linear functions, we can look at the last row and say that $x_{3}=0$. We can \textit{propogate} this upwards to say therefore that $-2x_{2}+0=-8 \to x_{2}=4$
+Here we have gone from the augmented matrix $[ A \mid b]$ to a much nicer $[U \mid b]$. By recalling that matricies are just an abstraction of linear functions, we can look at the last row and say that $x_{3}=0$. We can \textit{propogate} this upwards to say therefore that $-2x_{2}+0=-8 \to x_{2}=4$
 \item If we get a 0 in a pivot position, we say that a matrix is \textbf{singular}. In this case $Ax=b$ may not have a solution, or it may have infinite solutions. But it certainly does not have a single solution. All linear equations of this type either have 0, 1, or $\infty$ solutions.
 \item It wouldn't hurt us to brush up on matrix multiplication either. It turns out there are many ways to think about this operation.
 	\begin{enumerate}
@@ -673,6 +676,7 @@ For our ``projection matrix'' $P$. Now, let's imagine we define $S= C(A)$ such t
 \begin{examplebox}
 		\begin{wrapfigure}{l}{0.4\textwidth}
 		\includegraphics[width=\linewidth]{figs/linreg.png}
+		\footnotesize \centering Figure from \href{https://github.com/mitmath/18065/blob/main/notes/Least-Square%20Fitting.ipynb}{Prof. Johnson's Outstanding 18.065 Notes}
     \end{wrapfigure}
 	\nident Given a time series of temperature data, we want to calculate the linear regression with our matrix methods. We are going to construct another Vandermonde matrix: this time with a highly overdetermined system. 
 	$$\begin{bmatrix}
@@ -817,6 +821,8 @@ for $\Sigma$ with $n-r$ extra columns of 0's and $m-r$ extra rows of 0's compare
 \begin{ideabox}[Norms and Transformations]
 	\begin{wrapfigure}{l}{0.42\textwidth}
 	    \includegraphics[width=0.4\textwidth]{figs/ellipse.png}
+
+		\footnotesize \centering Figure from \href{https://nbviewer.org/github/mitmath/1806/blob/fall22/notes/SVD-intro.ipynb}{Prof. Johnson's 18.C06 Notebooks}
 	\end{wrapfigure}
 	\ndent A useful way to think of linear transformations on an orthonormal basis is an operator that transforms a unit circle into an ellipsoid, as the figure shows. This visualization is also the key to connecting the SVD to the eigenvectors of a matrix, which is perhaps the deepest connection in all of linear algebra. 
 	\\\\
@@ -848,5 +854,220 @@ for $\Sigma$ with $n-r$ extra columns of 0's and $m-r$ extra rows of 0's compare
 	    
 	\end{takeaways}
 \end{examplebox}
+\begin{itemize}
+	\item So why is any of that useful? Let's take a look at \textbf{error propogation} when solving linear systems. Suppose $\text{shape } A = m \times m$, $\rank A = r$ and $x = A^{-1}b.$ If we make a little error $\Delta b$ in $b$ (roundoff error, measurement noise, &c), what is the error $\Delta x$? 
+		$$A^{-1}(b + \Delta b) = A^{-1}b + A^{-1}\Delta b = x + \Delta x$$
+This equation really doesn't tell us much. We want to know how $\Delta b$ scales with $\|b\|$ and how $\Delta x$ scales with $\| x\|$.
+$$\frac{\| \Delta b \|}{\| b \|} = \frac{\| Ax \|}{\| x \|} \frac{\| \Delta x\|}{\|\Delta b\|} \leq \| A \| \| A^{-1}\| = \frac{\sigma_{\texttt{MAX}}}{\sigma_{\texttt{MIN}}} \equiv K(A)$$
+where we are defining $K(A)$ as the \textbf{condition number} of $A$. This tells us how close $A$ is to being singular.
+	\item For example, the least singular matrix is $I$. $A = U \Sigma V^T = I I I $. All $\sigma=1$. $K(I) = 1$. This also applies for any orthogonal matrix or multiple of $Q$ or $I$.
+\end{itemize}
+		\begin{ideabox}[Penrose Pseudo-inverse]\quad\\
+			With the SVD factorization, we can also describe the \textbf{pseudo-inverse} $A^{+}$ of $A$. This is a contrived generalization on our established idea of a matrix inverse that allows non-square matricies to be ``inverted'' such that $A^{+}A = I \ \forall \ A \in \R^{m \times n}$.
+			$$A^+ = \hat{V}\hat{\Sigma}^{-1}\hat{U}^T = \begin{cases}
+			A^{-1} &\text{if } m=n \text{ (square)} \\
+			(A^T A)^{-1}A^T &\text{if } n=r \text{ (tall)} \\
+			A^T(A A^T)^{-1} &\text{if } m=r \text{ (wide)} \\
+		\end{cases}$$
+		    
+		\end{ideabox}
+\begin{examplebox}[1.8]\quad\\
+	\noindent Prove using SVD that $A^{T}A$ is invertible if $A$ has full column rank and $C(A^{T}A) = C(A^{T})$.\vspace{0.14cm}
+\begin{solution}[1.8]\quad\\
+	Say $A \in \R^{m \times n}$ and $\operatorname{rank} A = r$ so that $A = \hat{U} \hat{\Sigma} \hat{V}^{T} \to A^{T}A = \hat{V}\hat{\Sigma}\hat{U}^{T}\hat{U} \hat{\Sigma} \hat{V}^{T} = \hat{V}_{n \times r}\hat{\Sigma}^{2}_{r \times r}\hat{V}^{T}_{r \times n}$. Since $A$ is full column-rank, $n=r$ and $\operatorname{rank} A^{T}A=n$. Knowing $A^{T}= \hat{V} \hat{\Sigma} \hat{U}^{T}$, we see that $\hat{V}$ spans $C(A^{T})$. We see the same in $A^{T}A = \hat{V} \hat{\Sigma^{2}}\hat{V}^{T}$ showing that $C(A^{T}A) = C(A)$    
+\end{solution}
+\begin{takeaways}[1.8]\quad
+    \begin{itemize}
+		\item The SVD transforms the vector into the column space spanned by the first matrix. This isn't always an obvious subspace.
+		\item Consider writing out the shapes of the matricies explicitly during algebra.
+    \end{itemize}
+\end{takeaways}
+\end{examplebox}
+\subsection{Eigenproblems}
+\begin{itemize}
+	\item We have finally arrived at the biggest idea in linear algebra: eigenvalues and eigenvectors. These eigenproblems, so called, are the web with which we can tie together almost everything in linear algebra. They will also lead us to our final factorization $S = Q \Lambda Q^{T}$. For now, unfortunately, I must be coy, and insist we visit the determinant. 
+		\subsubsection*{Determinant}
+	\item You may be surprised the determinant has not been so far mentioned. In reality, it's just not that useful for modern applications. But why don't we care about determinants anymore? While $\det A = ad-bc$ in $\R^{2}$, it turns out that past $\R^{4}$, the calculation of a determinant becomes so clumsy that we either must abstract it to computer computation or, if we are conservative about our compute, find ways to go around it to begin with.
+	\item Geometrically, the determinant represnts the factor by which the area of parallelogram between two vectors is multiplied as the result of a vector a transformation. The following figure may elucidate this obscure geometric meaning.
+		$$
+		\begin{tikzpicture}[scale=1.3, baseline]
+    % Input space
+    \draw (-0.7, 0) -- (2, 0);
+    \draw (0, -0.7) -- (0, 1.4);
+    
+    % Original parallelogram with fill
+    \fill[blue!10] (0,0) -- (0.8,0.8) -- (1.6,0.8) -- (0.8,0) -- cycle;
+    % Original vectors
+    \draw[thick, blue, ->] (0,0) -- (0.8,0.8) node[above] {$\vec{v}_1$};
+    \draw[thick, blue, ->] (0,0) -- (0.8,0) node[below] {$\vec{v}_2$};
+    \draw[blue, dotted] (0,0) -- (0.8,0.8) -- (1.6,0.8) -- (0.8,0) -- cycle;
+    \node[blue] at (0.6,-0.8) {$A_1$};
+    
+    % Label input space
+    \node at (-0.4, 1.3) [anchor=center] {$\mathbb{R}^2$};
+\end{tikzpicture}
+\quad
+\raisebox{0.00em}{
+\xrightarrow{\qquad A = \begin{bmatrix}
+  2 & 0\\
+1 & 1
+\end{bmatrix} \qquad}
+}\quad
+\quad
+\begin{tikzpicture}[scale=1.3, baseline]
+    % Output space
+    \draw (-0.7, 0) -- (2, 0);
+    \draw (0, -0.7) -- (0, 1.4);
+    
+    % Transformed parallelogram with fill
+    \fill[red!10] (0,0) -- (1.6,0.8) -- (3.2,0.8) -- (1.6,0) -- cycle;
+    % Transformed vectors
+    \draw[thick, red, ->] (0,0) -- (1.6,0.8) node[above] {$A\vec{v}_1$};
+    \draw[thick, red, ->] (0,0) -- (1.6,0) node[below] {$A\vec{v}_2$};
+    \draw[red, dotted] (0,0) -- (1.6,0.8) -- (3.2,0.8) -- (1.6,0) -- cycle;
+    \node[red] at (1.4,-0.8) {$A_2 = |\det(A)| \cdot A_1$};
+    
+    % Label output space
+    \node at (-0.4, 1.3) [anchor=center] {$\mathbb{R}^2$};
+    
+    % Matrix definition
+\end{tikzpicture}
+$$
+\item Yet, we are not geometers here. The most cherished property of the determinant is its part in deriving the eigenvalues and vectors. For that, we must understand its algebra. Symbolically, we can name many determinant identities that are useful. Here is a curation.
+	\begin{enumerate}
+		\item \textbf{Zeros:} $\det A = 0$ if $A$ is singular.
+		\item \textbf{Normalization: }$\det I = 1$.
+		\item \textbf{Swaps: } If you switch rows of $A$, flip the sign of $\det A$.
+		\item \textbf{Multiplication: }$\det(AB) = \det A \det B$
+		\item \textbf{Inverse: }$\det A^{-1} = \frac{1}{\det A}$
+		\item \textbf{Transpose: }$\det A^{T} = \det A$
+		\item \textbf{Linearity: }$\det \mtwtw{\alpha a}{\alpha b}{c}{d} = \alpha \det \mtwtw{a}{b}{c}{d} \longrightarrow \det (\alpha A) = \alpha^{n} \det A$ for $A \in \R^{n \times n}$.
+	\item \textbf{Row operations: }Adding a multiple of one row $\alpha r_{i}$ to another $r_{k}$ does not affect the determinant. \textit{Note this does \textit{not} imply that $\det A$ is invariant under row operations (i.e. permutation, scalar multiplication, \&c)}.
+	\item \textbf{Triangular matricies: }For upper triangular matrix $U = \begin{bmatrix}
+	  d_{1} & * & *\\
+	 & d_{2} & *\\
+	 &  & \ddots
+	\end{bmatrix}$, $\det U = \displaystyle \prod_{i=1}^{k}d_{i}$.
+	\end{enumerate}
+
+	\subsubsection*{Eigenvalues}
+\item The central idea of eigenvalues and eigenvectors is that we can find some vectors for which a linear operator $A$ acts like a scalar multiplier $\lambda$ on $x$. That is, only the \textit{magnitude} of $x$ is affected. It's direction stays the same. We express this as
+$$\boxed{Ax = \lambda x}$$
+When this is true, we say $x$ is our \textbf{eigenvector}, and $\lambda$ is our \textbf{eigenvalue.}
+\item Normally, for a matrix $A \in \R^{n \times n}$, we will find $n$ corresponding eigenvalues and eigenvectors $\lambda_{1},\ \lambda_{2},\ \ldots \ , \lambda_{n}$. A matrix that satisfiees this condition is called \textbf{diagonalizable}. Very few matricies will not. And we will address their special case, called ``defective matricies'' in due time.
+\item We will try to construct a basis of eigenvectors $X$ such that we can take any vector $x$ and expand it in the basis $x = c_{1}x_{1} + c_{2}x_{2} + \cdots = Xc$. For each eigenvector $x_{k}$, $A$ acts as the scalar $\lambda_{k}$. In order to find the vectors, we much find the eigenvalues. 
+\end{itemize}
+
+\end{itemize}
+
+
+\begin{wrapfigure}{l}{0.4\textwidth}
+\begin{tikzpicture}
+    % Axes
+    \draw[->] (-0.5, 0) -- (5.5, 0) node[anchor=north] {$\lambda$};
+    \draw[->] (0, -1) -- (0, 2.5) node[anchor=west, xshift=3mm] {$p(\lambda) = \det(A - \lambda I)$};
+
+    % Quartic polynomial (degree-4)
+    \draw[red, thick, smooth, samples=100, domain=0:5] 
+        plot (\x, {0.1*(\x-0.8)*(\x-2)*(\x-3.2)*(\x-4.5)});
+
+    % Roots (eigenvalues)
+    \foreach \x in {0.8, 2, 3.2, 4.5} {
+        \fill[blue] (\x, 0) circle (2pt);
+    }
+
+    % Dotted line for x-axis
+\end{tikzpicture}
+\end{wrapfigure}
+\noindent \hspace{-0.5cm} \textbullet \ \ Our defining case $Ax = \lambda_{k} x \implies (A - \lambda_{k} I)x = 0$, meaning that for $\lambda_{k}$, $A - \lambda_{k}I$ is singular, or $p(\lambda) = \det (A - \lambda_{k}I) = 0$. Our determinant will expand into some \textbf{characteristic polynomial} $p(\lambda)$. If $A$ is square, the roots of $p(\lambda)$ are the eigenvalues. For example if we have
+$$A = \mtwtw{1}{1}{-2}{4}$$
+It's eigenvalues can be calculated by simply
+\begin{align*}
+	\det (A - \lambda I) = \det \begin{bmatrix}
+     1 - \lambda & 1\\
+   -2 & 4 - \lambda
+\end{bmatrix} 
+&= (1 - \lambda)(4-\lambda) - (1)(-2)\\ &= \lambda^{2}-5\lambda + 6 = (\lambda -2)(\lambda - 3) \\
+&\implies \lambda_{1,2} = \{2,\ 3\}.
+\end{align*}
+\begin{itemize}
+	\item Since we are dealing with polynomials here, we must prepare for our eigenvalues to be complex. In the case we have $\lambda_{i} \in \mathbb{C}$ for a real matrix, the complex eigenvalues will form a \textbf{complex conjugage pair}. We will see this again soon.
+\subsubsection*{Eigenvectors}
+    \item Once we have the eigenvalues, the eigenvectors are just a basis for the $N(A - \lambda I)$. In our case from above
+		\begin{align*}
+			A - 2I = \mtwtw{-1}{1}{-2}{2} \text{ such that } (A - 2I)x_{1} = \mtwtw{-1}{1}{-2}{2} \vtwoC{1}{1} = \vtwoC{0}{0}
+		\end{align*}
+		revealing that $x_{1} = \vtwoC{1}{1}$. We repeat the same operation for $\lambda_{2} = 3$ to discover $x_{2} = \vtwoC{1}{2}$.
+
+\subsubsection*{Diagonalization}
+\item So why have we done all this to begin with? Really the purpose of constructing this eigenvector basis is to give us much greatear flexibility with our matrix operations. For an arbitrary matrix $A$, taking $A^{4}$ is a nightmare by naive methods. We can use our eigensolutions to give us a much deeper insight into these kinds of problems. For example, using our same $A$ as above,
+	$$A^{n}\vtwoC{2}{3} = A^{n} \bigg(\underbrace{\vtwoC{1}{1} + \vtwoC{1}{2}}_{x_{1}+x_{2}}\bigg) = 2^{n} \vtwoC{1}{2} + 3^{n} \vtwoC{1}{2} \approx 3^{n} \vtwoC{1}{2} \text{ for } n \gg 1$$
+	as $n$ grows, the largest eigenvector will \textbf{dominate} all smaller terms.
+\item This is a pretty slick expression. However you may be skeptical about how contrived the vector $\begin{bmatrix}
+  2 & 3
+\end{bmatrix}^{T}$ is. Recalling diagonalization above, we can generalize this into a marvelous form. Recall, we are generally doing all of this to construct a basis of eigenvectors $X$. With this we can say something like
+
+\begin{align*}
+	AX = \begin{bmatrix}
+  Ax_{1} & Ax_{2} & \cdots & Ax_{n}
+  \end{bmatrix} &= \begin{bmatrix}
+  \lambda_{1}x_{1} & \lambda_{2}x_{2} & \cdots & \lambda_{n}x_{n}
+\end{bmatrix}\\
+&= X \begin{bmatrix}
+  \lambda_{1} &  & \\
+ & \ddots & \\
+ &  & \lambda_{n}
+\end{bmatrix}= X \Lambda \\
+	\Aboxed{A \vec{y} &= X \Lambda X^{-1} \vec{y}}
+\end{align*}
+\begin{itemize}
+	\item $\bm{X^{-1}}\mathbf{y} \equiv \mathbf{c}$ projects $y$ into the $X$ basis.
+	\item $\bm{\Lambda}$ multiplies each coefficient $c_{k}$ by it's appropriate $\lambda_{k}$.
+	\item $\bm{X}$ adds up the eigenvectors and their coefficients.
+\end{itemize}
+\item With this, we can now make useful expressions such as $\vec{y} = \vec{x}_{1}c_{1} + \vec{x}_{2}c_{2}+ \cdots$ or similarly that $A \vec{y} = \lambda_{1}\vec{x}_{1}c_{1} + \cdots$.
+\item Now why did we expend all of that effort? We can connect this to our example of matrix powers above in a \textit{much} more elegant way. Here,  $A^{n} = X\Lambda X^{-1}X \Lambda X^{-1}X\Lambda X^{-1}\cdots = \boxed{X\Lambda^{n} X^{-1}}$. Since $\Lambda$ is a diagonal matrix, $\Lambda^{n} = \operatorname{diag} \qty(\lambda_{1}^{n},\ \lambda_{2}^{n}, \ \cdots \ \lambda_{r}^{n})$ which is just scalar multiplication.
+\item And, as we saw earlier with eigenvalue domination, for large $n$,
+	$$\Lambda^n  = \lambda_{1}^{n}\begin{bmatrix}
+	  1 &  & \\
+	 & (\lambda_{2}/\lambda_{1})^{n} & \\
+	 &  & \ddots
+	\end{bmatrix} \approx \begin{bmatrix}
+	  1 &  & \\
+	 & 0 & \\
+	 &  & \ddots
+	\end{bmatrix}$$ 
+	as the lower-order terms get exponentially small.
+	\\
+	\begin{ideabox}[Determinant and Trace]
+	    Before going any further, let's quickly define two facts that we will exploit thoroughly. We define the \textbf{trace} operation $\trace A$ as the sum of it's diagonal enteries for any square $A$. It obeys a handful of nice properties, particularly that $\trace (AB) = \trace (BA)$. Therefore, $\trace A = \trace (X \Lambda X^{-1}) = \trace ( X X^{-1} \Lambda) = \trace \Lambda$. Simply put,
+		$$\trace A = \sum_i \lambda_i$$
+		We can also uncover a hideen identity of the determinant now. As we established earlier, $\det (AB) = \det A \det B$. Therefore $\det A = \det X \det \Lambda (\det X)^{-1} = \det \Lambda$. Alternatively,
+		$$\det A = \prod_i \lambda_i$$
+		These results are \textit{very} useful. Last but not least, these operations also define a shortcut formula for our characteristic polynomial $$p(\lambda) = \lambda^{2} - \trace A + \det A$$
+	\end{ideabox}
+
+\item We would say that a matrix $A$ is \textbf{similar} to $B$ if $A = SBS^{-1}$ for some invertible $S$. Should this be true we can say $\det A = \det B,\ \trace A = \trace B,\ \det (A - \lambda I) = \det (SBS^{-1} - \lambda SS^{-1}) = \det (S (B- \lambda I)S^{-1}) = \det(B- \lambda I)$. In short, the eigenvalues are the same, but the eigenvectors are not.
+
+\end{itemize}
+
+\section{Applied Linear Algebra}
+\subsection{Tikhonov Regularization}
+\subsection{Statistics}
+
+\begin{itemize}
+	\item For some black box distribution that generates samples $x_k$, we have $m$ data points and sample mean 
+		$$\mu = \frac{1}{m}\sum_{k=1}^{m}x_{k}.$$
+	As the limit $m\to \infty$ the sample mean $\mu$ approach the true mean. Until then, we say the \textbf{sample variance} $S^2$
+	$$\text{Var}(x) = S^2 = \frac{1}{m-1}\sum_{k=1}^{m} (x_{k}-\mu)^{2}$$
+\item We can define the statistical mean in linear algebra terms by establishing $\vec{o} = \begin{pmatrix}
+  1 & 1 & \cdots & 1
+\end{pmatrix}^T$. By the definition of the dot product we know $\sum_{i=1}^{n} x_i= \vec{o}^T x$ and that $m=o^T o$. Substituting these into our summation, $\mu = \frac{o^Tx}{o^T o}$. We can rewrite the variance in a similar way
+$$\text{Var}(x) = \frac{\|\vec{x} - \mu \vec{o}\|^2}{m-1} = \frac{\| (I - \frac{o o ^T}{o^T o} )\vec{x}\|^2}{m-1}$$
+\item One may also be interested in evaluating the correlation between two sets of data, as measured by the \textbf{covariance}. For two variables $x$ and $y$,
+	$$\text{Covar}(x, y) = \frac{1}{m-1}\sum_{k=1}^{m}(x_k - \mu_x)(y_k - \mu_{y} = \frac{(Px)^T(Py)}{m-1} = \frac{x^TPy}{m-1}$$
+	for projection matrix $P = I - \frac{oo^T}{o^To}$.
+\end{itemize}
+
 \end{document}
 
